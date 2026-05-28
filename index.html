@@ -4,6 +4,12 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>🌟 Etkinlik Atölyesi</title>
+  <meta name="theme-color" content="#74b9ff" />
+  <meta name="mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="default" />
+  <meta name="apple-mobile-web-app-title" content="Etkinlik" />
+  <link rel="manifest" href="manifest.json" />
   <link href="https://fonts.googleapis.com/css2?family=Baloo+2:wght@400;600;700;800&family=Nunito:wght@400;600;700&display=swap" rel="stylesheet" />
   <style>
     :root {
@@ -679,6 +685,11 @@ function escHtml(str) {
 urldenTokenAl();
 kullaniciyiYukle().then(function(){ render(); });
 if (!state.token) render();
+</script>
+<script>
+  if ("serviceWorker" in navigator) {
+    navigator.serviceWorker.register("sw.js").catch(function(e) { console.log("SW hata:", e); });
+  }
 </script>
 </body>
 </html>
