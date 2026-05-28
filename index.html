@@ -29,14 +29,16 @@
     header {
       background: rgba(255,255,255,0.88);
       backdrop-filter: blur(20px);
-      padding: 16px 32px;
-      display: flex; align-items: center; justify-content: space-between;
+      padding: 10px 16px;
+      display: flex; flex-direction: column; gap: 8px;
       box-shadow: 0 2px 20px rgba(0,0,0,0.08);
       position: sticky; top: 0; z-index: 100;
     }
-    .header-logo h1 { font-family: 'Baloo 2', cursive; font-size: 24px; font-weight: 800; color: var(--koyu); }
-    .header-logo p { font-size: 12px; color: var(--mavi); font-weight: 600; }
-    .header-sag { display: flex; align-items: center; gap: 12px; }
+    .header-ust { display: flex; align-items: center; justify-content: space-between; }
+    .header-logo h1 { font-family: 'Baloo 2', cursive; font-size: 18px; font-weight: 800; color: var(--koyu); }
+    .header-logo p { font-size: 11px; color: var(--mavi); font-weight: 600; }
+    .header-sag { display: flex; align-items: center; gap: 8px; }
+    .header-sekmeler { display: flex; gap: 6px; overflow-x: auto; padding-bottom: 2px; }
 
     /* SEKME */
     .sekme-btn {
@@ -260,13 +262,7 @@
 </script>
 
 <!-- ===================== HTML ===================== -->
-<header>
-  <div class="header-logo">
-    <h1>🌟 Etkinlik Atölyesi</h1>
-    <p>Okul Öncesi Etkinlik Planlayıcı</p>
-  </div>
-  <div class="header-sag" id="headerSag"></div>
-</header>
+<header id="mainHeader"></header>
 
 <div id="app"></div>
 
@@ -475,34 +471,42 @@ function render() {
 }
 
 function renderHeader() {
-  var el = document.getElementById("headerSag");
-  if (state.kullanici) {
-    el.innerHTML = '<div class="kullanici-bilgi">'
-      + (state.kullanici.resim ? '<img src="' + state.kullanici.resim + '" alt="profil" />' : '')
-      + '<span>' + state.kullanici.ad + '</span>'
-      + '</div>'
-      + '<button class="cikis-btn" onclick="cikisYap()">Çıkış</button>';
+  var header = document.getElementById("mainHeader");
+  if (!header) return;
 
-    // Sekme butonları
+  if (state.kullanici) {
     var sekmeler = [
       { id: "olustur", label: "✨ Oluştur" },
-      { id: "liste",   label: "📝 Geçici (" + state.etkinlikler.length + ")" },
-      { id: "kayitli", label: "⭐ Kayıtlı (" + state.kayitliEtkinlikler.length + ")" },
+      { id: "liste",   label: "📝 (" + state.etkinlikler.length + ")" },
+      { id: "kayitli", label: "⭐ (" + state.kayitliEtkinlikler.length + ")" },
     ];
-    var btns = sekmeler.map(function(s) {
+    var sekmeBtns = sekmeler.map(function(s) {
       return '<button class="sekme-btn ' + (state.sekme === s.id ? "aktif" : "") + '" onclick="sekmeDegistir(\'' + s.id + '\')">' + s.label + '</button>';
     }).join("");
-    el.innerHTML = btns + el.innerHTML;
+    header.innerHTML = '<div class="header-ust">'
+      + '<div class="header-logo"><h1>🌟 Etkinlik Atölyesi</h1></div>'
+      + '<div class="header-sag">'
+      + '<div class="kullanici-bilgi">'
+      + (state.kullanici.resim ? '<img src="' + state.kullanici.resim + '" alt="profil" />' : '')
+      + '<span>' + state.kullanici.ad.split(" ")[0] + '</span>'
+      + '</div>'
+      + '<button class="cikis-btn" onclick="cikisYap()">Çıkış</button>'
+      + '</div></div>'
+      + '<div class="header-sekmeler">' + sekmeBtns + '</div>';
   } else {
-    // Sadece oluştur/liste sekmeleri
     var sekmeler2 = [
       { id: "olustur", label: "✨ Oluştur" },
-      { id: "liste",   label: "📝 Liste (" + state.etkinlikler.length + ")" },
+      { id: "liste",   label: "📝 (" + state.etkinlikler.length + ")" },
     ];
     var btns2 = sekmeler2.map(function(s) {
       return '<button class="sekme-btn ' + (state.sekme === s.id ? "aktif" : "") + '" onclick="sekmeDegistir(\'' + s.id + '\')">' + s.label + '</button>';
     }).join("");
-    el.innerHTML = btns2 + '<a href="' + WORKER_URL + '/auth/google" class="google-btn" style="padding:8px 16px;font-size:13px;gap:8px;border-radius:12px;">Google ile Giriş</a>';
+    header.innerHTML = '<div class="header-ust">'
+      + '<div class="header-logo"><h1>🌟 Etkinlik Atölyesi</h1></div>'
+      + '<div class="header-sag">'
+      + '<a href="' + WORKER_URL + '/auth/google" class="google-btn" style="padding:7px 14px;font-size:13px;gap:6px;border-radius:12px;white-space:nowrap;">Google ile Giriş</a>'
+      + '</div></div>'
+      + '<div class="header-sekmeler">' + btns2 + '</div>';
   }
 }
 
