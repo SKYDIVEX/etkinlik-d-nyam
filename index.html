@@ -7,766 +7,535 @@
   <meta name="theme-color" content="#74b9ff" />
   <meta name="mobile-web-app-capable" content="yes" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
-  <meta name="apple-mobile-web-app-status-bar-style" content="default" />
   <meta name="apple-mobile-web-app-title" content="Etkinlik" />
   <link rel="manifest" href="manifest.json" />
   <link href="https://fonts.googleapis.com/css2?family=Baloo+2:wght@400;600;700;800&family=Nunito:wght@400;600;700&display=swap" rel="stylesheet" />
   <style>
     :root {
-      --mavi: #74b9ff;
-      --mor: #a29bfe;
-      --yesil: #55efc4;
-      --turuncu: #fdcb6e;
-      --kirmizi: #ff7675;
-      --koyu: #2d3436;
-      --gri: #636e72;
-      --acik: #f8f9fa;
+      --mavi: #74b9ff; --mor: #a29bfe; --koyu: #2d3436;
+      --gri: #636e72; --acik: #f8f9fa; --bg: linear-gradient(135deg,#ffecd2 0%,#fcb69f 30%,#a1c4fd 70%,#c2e9fb 100%);
     }
     * { box-sizing: border-box; margin: 0; padding: 0; }
-    body {
-      font-family: 'Nunito', sans-serif;
-      min-height: 100vh;
-      background: linear-gradient(135deg, #ffecd2 0%, #fcb69f 30%, #a1c4fd 70%, #c2e9fb 100%);
-      background-attachment: fixed;
-    }
-    .font-baloo { font-family: 'Baloo 2', cursive; }
+    body { font-family: 'Nunito', sans-serif; min-height: 100vh; background: var(--bg); background-attachment: fixed; }
 
     /* HEADER */
-    header {
-      background: rgba(255,255,255,0.88);
-      backdrop-filter: blur(20px);
-      padding: 10px 16px;
-      display: flex; flex-direction: column; gap: 8px;
-      box-shadow: 0 2px 20px rgba(0,0,0,0.08);
-      position: sticky; top: 0; z-index: 100;
-    }
+    header { background: rgba(255,255,255,0.88); backdrop-filter: blur(20px); padding: 10px 16px; display: flex; flex-direction: column; gap: 8px; box-shadow: 0 2px 20px rgba(0,0,0,0.08); position: sticky; top: 0; z-index: 100; }
     .header-ust { display: flex; align-items: center; justify-content: space-between; }
     .header-logo h1 { font-family: 'Baloo 2', cursive; font-size: 18px; font-weight: 800; color: var(--koyu); }
-    .header-logo p { font-size: 11px; color: var(--mavi); font-weight: 600; }
     .header-sag { display: flex; align-items: center; gap: 8px; }
     .header-sekmeler { display: flex; gap: 6px; overflow-x: auto; padding-bottom: 2px; }
-
-    /* SEKME */
-    .sekme-btn {
-      background: rgba(255,255,255,0.6); border: none; border-radius: 12px;
-      padding: 8px 18px; font-family: 'Baloo 2', cursive; font-weight: 700;
-      font-size: 14px; cursor: pointer; color: var(--gri); transition: all 0.2s;
-    }
+    .sekme-btn { background: rgba(255,255,255,0.6); border: none; border-radius: 12px; padding: 7px 14px; font-family: 'Baloo 2', cursive; font-weight: 700; font-size: 13px; cursor: pointer; color: var(--gri); transition: all 0.2s; white-space: nowrap; }
     .sekme-btn.aktif { background: var(--mavi); color: white; }
-
-    /* KULLANICI */
-    .kullanici-bilgi {
-      display: flex; align-items: center; gap: 8px;
-      background: rgba(255,255,255,0.7); border-radius: 20px; padding: 6px 12px;
-    }
-    .kullanici-bilgi img { width: 28px; height: 28px; border-radius: 50%; }
+    .kullanici-bilgi { display: flex; align-items: center; gap: 8px; background: rgba(255,255,255,0.7); border-radius: 20px; padding: 5px 10px; cursor: pointer; }
+    .kullanici-bilgi img { width: 26px; height: 26px; border-radius: 50%; }
     .kullanici-bilgi span { font-size: 13px; font-weight: 700; color: var(--koyu); }
-    .cikis-btn {
-      background: none; border: 2px solid #dfe6e9; border-radius: 10px;
-      padding: 5px 12px; font-size: 12px; font-weight: 700; cursor: pointer;
-      color: var(--gri); transition: all 0.15s;
-    }
-    .cikis-btn:hover { background: #fff0f0; border-color: var(--kirmizi); color: var(--kirmizi); }
-
-    /* LOGIN SAYFASI */
-    .login-wrap {
-      display: flex; flex-direction: column; align-items: center;
-      justify-content: center; min-height: 80vh; gap: 24px; padding: 20px;
-    }
-    .login-kart {
-      background: rgba(255,255,255,0.92); border-radius: 28px;
-      padding: 48px 40px; max-width: 420px; width: 100%;
-      box-shadow: 0 8px 40px rgba(0,0,0,0.1); text-align: center;
-    }
-    .login-kart .emoji { font-size: 64px; margin-bottom: 16px; display: block; }
-    .login-kart h2 { font-family: 'Baloo 2', cursive; font-size: 26px; font-weight: 800; color: var(--koyu); margin-bottom: 8px; }
-    .login-kart p { color: var(--gri); font-size: 15px; margin-bottom: 32px; line-height: 1.6; }
-    .google-btn {
-      display: flex; align-items: center; justify-content: center; gap: 12px;
-      width: 100%; padding: 14px 20px; background: white;
-      border: 2px solid #e9ecef; border-radius: 16px;
-      font-family: 'Baloo 2', cursive; font-weight: 700; font-size: 16px;
-      cursor: pointer; color: var(--koyu); transition: all 0.2s;
-      text-decoration: none;
-    }
-    .google-btn:hover { border-color: var(--mavi); box-shadow: 0 4px 16px rgba(116,185,255,0.3); transform: translateY(-2px); }
-    .google-btn svg { width: 22px; height: 22px; }
+    .cikis-btn { background: none; border: 2px solid #dfe6e9; border-radius: 10px; padding: 5px 10px; font-size: 12px; font-weight: 700; cursor: pointer; color: var(--gri); }
 
     /* MAIN */
-    main { max-width: 960px; margin: 0 auto; padding: 32px 20px; }
+    main { max-width: 960px; margin: 0 auto; padding: 24px 16px; }
 
-    /* KART */
-    .kart {
-      background: rgba(255,255,255,0.9); border-radius: 24px;
-      padding: 28px; box-shadow: 0 4px 24px rgba(0,0,0,0.07);
-      margin-bottom: 20px;
-    }
-    .kart h2 { font-family: 'Baloo 2', cursive; font-size: 18px; font-weight: 800; color: var(--koyu); margin-bottom: 18px; }
+    /* KARTLAR */
+    .kart { background: rgba(255,255,255,0.9); border-radius: 24px; padding: 24px; box-shadow: 0 4px 24px rgba(0,0,0,0.07); margin-bottom: 16px; }
+    .kart h2 { font-family: 'Baloo 2', cursive; font-size: 16px; font-weight: 800; color: var(--koyu); margin-bottom: 14px; }
 
-    /* SEÇİM BUTONLARI */
-    .secim-grup { display: flex; flex-wrap: wrap; gap: 10px; }
-    .secim-btn {
-      background: var(--acik); border: 2px solid #e9ecef;
-      border-radius: 14px; padding: 10px 20px;
-      font-family: 'Baloo 2', cursive; font-weight: 700; font-size: 14px;
-      cursor: pointer; color: var(--gri); transition: all 0.15s;
-    }
+    /* SEÇİM */
+    .secim-grup { display: flex; flex-wrap: wrap; gap: 8px; }
+    .secim-btn { background: var(--acik); border: 2px solid #e9ecef; border-radius: 12px; padding: 8px 16px; font-family: 'Baloo 2', cursive; font-weight: 700; font-size: 13px; cursor: pointer; color: var(--gri); transition: all 0.15s; }
     .secim-btn.aktif { background: var(--mavi); border-color: var(--mavi); color: white; }
-
-    /* KATEGORİ GRID */
-    .kategori-grid {
-      display: grid; grid-template-columns: repeat(auto-fill, minmax(175px, 1fr)); gap: 10px;
-    }
-    .kategori-btn {
-      background: var(--acik); border: 2px solid #e9ecef;
-      border-radius: 14px; padding: 12px 14px;
-      font-family: 'Baloo 2', cursive; font-weight: 700; font-size: 13px;
-      cursor: pointer; color: var(--gri); transition: all 0.15s; text-align: left;
-    }
+    .kategori-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(160px, 1fr)); gap: 8px; }
+    .kategori-btn { background: var(--acik); border: 2px solid #e9ecef; border-radius: 12px; padding: 10px 12px; font-family: 'Baloo 2', cursive; font-weight: 700; font-size: 12px; cursor: pointer; color: var(--gri); text-align: left; transition: all 0.15s; }
 
     /* INPUT */
-    input, textarea {
-      width: 100%; border: 2px solid #e9ecef; border-radius: 12px;
-      padding: 10px 14px; font-family: 'Nunito', sans-serif; font-size: 14px;
-      outline: none; color: var(--koyu); transition: border-color 0.15s;
-      background: white;
-    }
+    input, textarea { width: 100%; border: 2px solid #e9ecef; border-radius: 12px; padding: 10px 14px; font-family: 'Nunito', sans-serif; font-size: 14px; outline: none; color: var(--koyu); background: white; transition: border-color 0.15s; }
     input:focus, textarea:focus { border-color: var(--mavi); }
     textarea { resize: none; }
-    label { display: block; font-size: 12px; font-weight: 700; color: #b2bec3;
-            text-transform: uppercase; letter-spacing: 1px; margin-bottom: 8px; }
+    label { display: block; font-size: 11px; font-weight: 700; color: #b2bec3; text-transform: uppercase; letter-spacing: 1px; margin-bottom: 6px; }
+    .iki-kolon { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
 
-    /* OLUŞTUR BUTONU */
-    .olustur-btn {
-      width: 100%; padding: 18px; border: none; border-radius: 18px;
-      font-family: 'Baloo 2', cursive; font-weight: 800; font-size: 18px;
-      cursor: pointer; color: white; transition: all 0.2s; letter-spacing: 0.5px;
-      background: linear-gradient(135deg, var(--mavi), var(--mor));
-      box-shadow: 0 8px 24px rgba(116,185,255,0.4);
-    }
-    .olustur-btn:disabled {
-      background: #dfe6e9; color: #b2bec3;
-      box-shadow: none; cursor: not-allowed;
-    }
-    .olustur-btn:not(:disabled):hover { transform: translateY(-2px); box-shadow: 0 12px 32px rgba(116,185,255,0.5); }
+    /* TOGGLE */
+    .toggle-wrap { display: flex; align-items: center; gap: 12px; }
+    .toggle { position: relative; width: 48px; height: 26px; }
+    .toggle input { opacity: 0; width: 0; height: 0; }
+    .toggle-slider { position: absolute; inset: 0; background: #dfe6e9; border-radius: 26px; cursor: pointer; transition: 0.3s; }
+    .toggle-slider:before { content: ""; position: absolute; height: 20px; width: 20px; left: 3px; bottom: 3px; background: white; border-radius: 50%; transition: 0.3s; }
+    .toggle input:checked + .toggle-slider { background: var(--mavi); }
+    .toggle input:checked + .toggle-slider:before { transform: translateX(22px); }
+
+    /* BUTON */
+    .btn-ana { width: 100%; padding: 16px; border: none; border-radius: 16px; font-family: 'Baloo 2', cursive; font-weight: 800; font-size: 17px; cursor: pointer; color: white; background: linear-gradient(135deg, var(--mavi), var(--mor)); box-shadow: 0 8px 24px rgba(116,185,255,0.4); transition: all 0.2s; }
+    .btn-ana:disabled { background: #dfe6e9; color: #b2bec3; box-shadow: none; cursor: not-allowed; }
+    .btn-kucuk { background: var(--acik); border: none; border-radius: 10px; padding: 7px 12px; font-size: 12px; font-weight: 700; cursor: pointer; color: var(--gri); transition: background 0.15s; }
+    .btn-kucuk:hover { background: #e9ecef; }
+    .btn-yesil { background: #e8f5e9; border: none; border-radius: 10px; padding: 7px 12px; font-size: 12px; font-weight: 700; cursor: pointer; color: #2e7d32; }
+    .btn-yesil:disabled { opacity: 0.5; cursor: not-allowed; }
+    .btn-kirmizi { background: #fff0f0; border: none; border-radius: 10px; padding: 7px 12px; font-size: 12px; font-weight: 700; cursor: pointer; color: #e17055; }
+    .btn-paylasim { background: #e8f4fd; border: none; border-radius: 10px; padding: 7px 12px; font-size: 12px; font-weight: 700; cursor: pointer; color: #2980b9; }
+    .btn-indir { background: #f3e5f5; border: none; border-radius: 10px; padding: 7px 12px; font-size: 12px; font-weight: 700; cursor: pointer; color: #7b1fa2; }
 
     /* ETKİNLİK KARTLARI */
-    .etkinlik-grid {
-      display: grid; grid-template-columns: repeat(auto-fill, minmax(360px, 1fr)); gap: 20px;
-    }
-    .etkinlik-kart {
-      background: white; border-radius: 20px; overflow: hidden;
-      box-shadow: 0 4px 20px rgba(0,0,0,0.08); transition: transform 0.2s, box-shadow 0.2s;
-    }
-    .etkinlik-kart:hover { transform: translateY(-4px); box-shadow: 0 12px 32px rgba(0,0,0,0.14); }
-    .etkinlik-kart-ust {
-      padding: 16px 20px; display: flex;
-      justify-content: space-between; align-items: center;
-    }
-    .etkinlik-kart-ust span.kategori-label {
-      font-family: 'Baloo 2', cursive; font-size: 14px; font-weight: 700; color: rgba(0,0,0,0.65);
-    }
-    .badge {
-      background: rgba(255,255,255,0.6); border-radius: 20px;
-      padding: 3px 10px; font-size: 11px; font-weight: 700;
-    }
-    .badges { display: flex; gap: 6px; }
-    .etkinlik-kart-icerik { padding: 18px 20px; }
-    .etkinlik-kart-icerik h3 { font-family: 'Baloo 2', cursive; font-size: 17px; color: var(--koyu); margin-bottom: 6px; }
-    .etkinlik-kart-icerik p.hedef { font-size: 13px; color: var(--gri); line-height: 1.6; margin-bottom: 14px; }
-    .detay-toggle {
-      background: none; border: 2px solid #e9ecef; border-radius: 10px;
-      padding: 6px 14px; font-size: 12px; font-weight: 700; color: var(--koyu);
-      cursor: pointer; transition: all 0.15s;
-    }
-    .detay-bolum { margin-top: 14px; display: flex; flex-direction: column; gap: 12px; }
-    .detay-baslik { font-size: 11px; font-weight: 700; color: #b2bec3; text-transform: uppercase; letter-spacing: 1px; display: block; margin-bottom: 4px; }
-    .detay-bolum p, .detay-bolum li { font-size: 13px; color: var(--koyu); line-height: 1.7; }
-    .detay-bolum ol { padding-left: 18px; }
-    .malzeme-list { display: flex; flex-wrap: wrap; gap: 6px; margin-top: 4px; }
-    .malzeme-chip {
-      background: var(--acik); border: 1px solid #e9ecef;
-      border-radius: 8px; padding: 4px 10px; font-size: 12px;
-    }
-    .ipucu { background: #fff9c4; border-radius: 10px; padding: 10px 14px; font-size: 13px; color: #5d4037; }
-    .kart-alt { padding: 0 20px 16px; display: flex; gap: 8px; }
-    .kopyala-btn {
-      flex: 1; background: var(--acik); border: none; border-radius: 10px;
-      padding: 8px 0; font-size: 12px; font-weight: 700; cursor: pointer; color: var(--gri);
-      transition: background 0.15s;
-    }
-    .kopyala-btn:hover { background: #e9ecef; }
-    .kaydet-btn {
-      flex: 1; background: #e8f5e9; border: none; border-radius: 10px;
-      padding: 8px 0; font-size: 12px; font-weight: 700; cursor: pointer; color: #2e7d32;
-      transition: background 0.15s;
-    }
-    .kaydet-btn:hover { background: #c8e6c9; }
-    .kaydet-btn:disabled { background: #f1f8e9; color: #a5d6a7; cursor: not-allowed; }
-    .sil-btn {
-      background: #fff0f0; border: none; border-radius: 10px;
-      padding: 8px 14px; font-size: 12px; font-weight: 700; cursor: pointer; color: #e17055;
-      transition: background 0.15s;
-    }
-    .sil-btn:hover { background: #ffd5cc; }
+    .etkinlik-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(320px, 1fr)); gap: 16px; }
+    .etkinlik-kart { background: white; border-radius: 20px; overflow: hidden; box-shadow: 0 4px 20px rgba(0,0,0,0.08); transition: transform 0.2s, box-shadow 0.2s; }
+    .etkinlik-kart:hover { transform: translateY(-3px); box-shadow: 0 10px 28px rgba(0,0,0,0.13); }
+    .etkinlik-kart-ust { padding: 14px 18px; display: flex; justify-content: space-between; align-items: center; }
+    .etkinlik-kart-ust .kat-label { font-family: 'Baloo 2', cursive; font-size: 13px; font-weight: 700; color: rgba(0,0,0,0.65); }
+    .badges { display: flex; gap: 5px; flex-wrap: wrap; }
+    .badge { background: rgba(255,255,255,0.65); border-radius: 20px; padding: 2px 8px; font-size: 11px; font-weight: 700; }
+    .etkinlik-kart-icerik { padding: 16px 18px; }
+    .etkinlik-kart-icerik h3 { font-family: 'Baloo 2', cursive; font-size: 16px; color: var(--koyu); margin-bottom: 5px; }
+    .etkinlik-kart-icerik .hedef { font-size: 12px; color: var(--gri); line-height: 1.6; margin-bottom: 10px; }
+    .sahip-bilgi { display: flex; align-items: center; gap: 6px; margin-bottom: 10px; cursor: pointer; }
+    .sahip-bilgi img { width: 22px; height: 22px; border-radius: 50%; }
+    .sahip-bilgi span { font-size: 12px; font-weight: 700; color: var(--mavi); }
+    .orijinal-badge { font-size: 10px; color: #b2bec3; margin-bottom: 8px; }
+    .detay-toggle { background: none; border: 2px solid #e9ecef; border-radius: 8px; padding: 5px 12px; font-size: 11px; font-weight: 700; color: var(--koyu); cursor: pointer; }
+    .detay-bolum { margin-top: 12px; display: flex; flex-direction: column; gap: 10px; }
+    .detay-baslik { font-size: 10px; font-weight: 700; color: #b2bec3; text-transform: uppercase; letter-spacing: 1px; display: block; margin-bottom: 3px; }
+    .detay-bolum p, .detay-bolum li { font-size: 12px; color: var(--koyu); line-height: 1.7; }
+    .detay-bolum ol { padding-left: 16px; }
+    .malzeme-list { display: flex; flex-wrap: wrap; gap: 5px; margin-top: 4px; }
+    .malzeme-chip { background: var(--acik); border: 1px solid #e9ecef; border-radius: 8px; padding: 3px 8px; font-size: 11px; }
+    .ipucu { background: #fff9c4; border-radius: 8px; padding: 8px 12px; font-size: 12px; color: #5d4037; }
+    .kart-alt { padding: 0 18px 14px; display: flex; gap: 6px; flex-wrap: wrap; }
 
-    /* BOŞ DURUM */
-    .bos-durum { text-align: center; padding: 80px 20px; }
-    .bos-durum .emoji { font-size: 72px; margin-bottom: 16px; display: block; }
-    .bos-durum h2 { font-family: 'Baloo 2', cursive; font-size: 22px; color: rgba(0,0,0,0.45); font-weight: 700; }
-    .bos-durum p { color: rgba(0,0,0,0.35); font-size: 15px; margin-top: 8px; }
+    /* GALERİ */
+    .galeri-filtre { display: flex; gap: 8px; overflow-x: auto; padding-bottom: 8px; margin-bottom: 16px; }
+    .galeri-filtre button { white-space: nowrap; }
 
-    /* HATA */
-    .hata-kutu {
-      background: #fff0f0; border: 2px solid #ffb3b3; border-radius: 14px;
-      padding: 14px 20px; color: #e17055; font-weight: 700; margin-bottom: 16px;
-    }
+    /* PROFİL */
+    .profil-kart { background: rgba(255,255,255,0.9); border-radius: 24px; padding: 28px; box-shadow: 0 4px 24px rgba(0,0,0,0.07); margin-bottom: 20px; }
+    .profil-ust { display: flex; align-items: center; gap: 16px; margin-bottom: 16px; }
+    .profil-ust img { width: 64px; height: 64px; border-radius: 50%; border: 3px solid var(--mavi); }
+    .profil-ust h2 { font-family: 'Baloo 2', cursive; font-size: 20px; font-weight: 800; color: var(--koyu); }
+    .profil-ust p { font-size: 13px; color: var(--gri); }
+    .profil-stats { display: flex; gap: 20px; margin-bottom: 16px; }
+    .profil-stat { text-align: center; }
+    .profil-stat strong { display: block; font-family: 'Baloo 2', cursive; font-size: 20px; font-weight: 800; color: var(--koyu); }
+    .profil-stat span { font-size: 12px; color: var(--gri); }
+    .gizlilik-toggle { display: flex; align-items: center; gap: 10px; background: var(--acik); border-radius: 12px; padding: 10px 16px; margin-bottom: 12px; }
+    .gizlilik-toggle span { font-size: 13px; font-weight: 700; color: var(--koyu); flex: 1; }
 
-    /* TOAST */
-    .toast {
-      position: fixed; bottom: 32px; left: 50%; transform: translateX(-50%);
-      background: var(--koyu); color: white; border-radius: 16px;
-      padding: 12px 24px; font-weight: 700; font-size: 14px;
-      box-shadow: 0 8px 24px rgba(0,0,0,0.2); z-index: 999;
-      animation: toastIn 0.3s ease;
-    }
-    @keyframes toastIn { from { opacity: 0; transform: translateX(-50%) translateY(10px); } to { opacity: 1; transform: translateX(-50%) translateY(0); } }
+    /* BOŞ */
+    .bos { text-align: center; padding: 60px 20px; }
+    .bos .emoji { font-size: 60px; display: block; margin-bottom: 12px; }
+    .bos h2 { font-family: 'Baloo 2', cursive; font-size: 20px; color: rgba(0,0,0,0.4); font-weight: 700; }
+    .bos p { color: rgba(0,0,0,0.3); font-size: 14px; margin-top: 6px; }
 
-    /* İKİ KOLON */
-    .iki-kolon { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
+    /* HATA/TOAST */
+    .hata { background: #fff0f0; border: 2px solid #ffb3b3; border-radius: 14px; padding: 12px 18px; color: #e17055; font-weight: 700; margin-bottom: 14px; }
+    .toast { position: fixed; bottom: 28px; left: 50%; transform: translateX(-50%); background: #2d3436; color: white; border-radius: 14px; padding: 11px 22px; font-weight: 700; font-size: 13px; box-shadow: 0 8px 24px rgba(0,0,0,0.2); z-index: 999; animation: tin 0.3s ease; }
+    @keyframes tin { from { opacity:0; transform:translateX(-50%) translateY(8px); } to { opacity:1; transform:translateX(-50%) translateY(0); } }
+
+    /* LOGIN */
+    .login-wrap { display: flex; flex-direction: column; align-items: center; justify-content: center; min-height: 75vh; padding: 20px; }
+    .login-kart { background: rgba(255,255,255,0.92); border-radius: 28px; padding: 44px 36px; max-width: 400px; width: 100%; box-shadow: 0 8px 40px rgba(0,0,0,0.1); text-align: center; }
+    .login-kart .emoji { font-size: 60px; display: block; margin-bottom: 14px; }
+    .login-kart h2 { font-family: 'Baloo 2', cursive; font-size: 24px; font-weight: 800; color: var(--koyu); margin-bottom: 8px; }
+    .login-kart p { color: var(--gri); font-size: 14px; margin-bottom: 28px; line-height: 1.6; }
+    .google-btn { display: flex; align-items: center; justify-content: center; gap: 10px; width: 100%; padding: 13px 20px; background: white; border: 2px solid #e9ecef; border-radius: 14px; font-family: 'Baloo 2', cursive; font-weight: 700; font-size: 15px; cursor: pointer; color: var(--koyu); text-decoration: none; transition: all 0.2s; }
+    .google-btn:hover { border-color: var(--mavi); box-shadow: 0 4px 16px rgba(116,185,255,0.3); }
+
+    /* SPINNER */
+    .spinner { display: inline-block; width: 18px; height: 18px; border: 3px solid rgba(255,255,255,0.4); border-top-color: white; border-radius: 50%; animation: spin 0.7s linear infinite; margin-right: 8px; vertical-align: middle; }
+    @keyframes spin { to { transform: rotate(360deg); } }
+
+    /* MODAL */
+    .modal-bg { position: fixed; inset: 0; background: rgba(0,0,0,0.5); z-index: 200; display: flex; align-items: center; justify-content: center; padding: 20px; }
+    .modal { background: white; border-radius: 24px; padding: 28px; max-width: 400px; width: 100%; box-shadow: 0 20px 60px rgba(0,0,0,0.2); }
+    .modal h3 { font-family: 'Baloo 2', cursive; font-size: 18px; font-weight: 800; color: var(--koyu); margin-bottom: 16px; }
+    .paylasim-secenekler { display: flex; flex-direction: column; gap: 10px; }
+    .paylasim-btn { display: flex; align-items: center; gap: 12px; padding: 14px 16px; border: 2px solid #e9ecef; border-radius: 14px; background: white; cursor: pointer; font-family: 'Nunito', sans-serif; font-weight: 700; font-size: 14px; color: var(--koyu); text-decoration: none; transition: all 0.15s; }
+    .paylasim-btn:hover { border-color: var(--mavi); background: #f0f8ff; }
+    .paylasim-btn .icon { font-size: 22px; }
+    .modal-kapat { width: 100%; margin-top: 12px; padding: 10px; border: none; border-radius: 12px; background: var(--acik); font-family: 'Baloo 2', cursive; font-weight: 700; font-size: 14px; cursor: pointer; color: var(--gri); }
+
     @media (max-width: 600px) {
       .iki-kolon { grid-template-columns: 1fr; }
       .etkinlik-grid { grid-template-columns: 1fr; }
-      header { padding: 12px 16px; }
-      main { padding: 20px 12px; }
     }
 
-    /* YÜKLENIYOR */
-    .spinner { display: inline-block; width: 20px; height: 20px; border: 3px solid rgba(255,255,255,0.4); border-top-color: white; border-radius: 50%; animation: spin 0.7s linear infinite; margin-right: 8px; vertical-align: middle; }
-    @keyframes spin { to { transform: rotate(360deg); } }
+    /* FOOTER */
+    footer { background: #1a1a2e; margin-top: 60px; padding: 60px 24px 0; font-family: 'Nunito', sans-serif; }
+    .footer-ic { max-width: 960px; margin: 0 auto; }
+    .footer-ayrac { display: flex; align-items: center; gap: 16px; margin-bottom: 48px; }
+    .footer-ayrac div { height: 1px; flex: 1; }
+    .footer-ayrac span { font-family: 'Baloo 2', cursive; font-size: 13px; font-weight: 700; color: #ffffff33; letter-spacing: 3px; text-transform: uppercase; }
+    .footer-grid { display: flex; flex-wrap: wrap; gap: 80px; margin-bottom: 48px; }
+    .footer-alt { border-top: 1px solid #ffffff0f; padding: 20px 0; }
+    .footer-alt span { font-size: 12px; color: #8892a4; }
   </style>
 </head>
 <body>
-
-<!-- ===================== CONFIG ===================== -->
-<script>
-  // !! BURAYA KENDİ WORKER URL'İNİ YAZ !!
-  const WORKER_URL = "https://etkinlik-auth.enesseker2113-599.workers.dev";
-
-  const KATEGORILER = [
-    { id: "sanat",     label: "🎨 Sanat & El Sanatları", renk: "#FF6B6B" },
-    { id: "matematik", label: "🔢 Matematik & Sayılar",  renk: "#4ECDC4" },
-    { id: "dil",       label: "📖 Dil & Hikaye",         renk: "#45B7D1" },
-    { id: "muzik",     label: "🎵 Müzik & Ritim",        renk: "#96CEB4" },
-    { id: "fen",       label: "🔬 Fen & Doğa",           renk: "#FFEAA7" },
-    { id: "motor",     label: "🤸 Motor Beceriler",       renk: "#DDA0DD" },
-    { id: "sosyal",    label: "👫 Sosyal & Duygusal",     renk: "#F0E68C" },
-    { id: "oyun",      label: "🎮 Oyun & Hareket",        renk: "#98FB98" },
-  ];
-  const YASLAR  = ["3 yaş", "4 yaş", "5 yaş", "6 yaş"];
-  const SURELER = ["15 dakika", "30 dakika", "45 dakika", "1 saat"];
-</script>
-
-<!-- ===================== HTML ===================== -->
 <header id="mainHeader"></header>
-
 <div id="app"></div>
 
-<!-- ===================== SCRIPT ===================== -->
-<script>
-// ---- STATE ----
-let state = {
-  kullanici: null,
-  token: localStorage.getItem("ea_token") || null,
-  sekme: "olustur",
-  form: { yas: "4 yaş", kategori: "sanat", sure: "30 dakika", tema: "", ozelIstek: "" },
-  etkinlikler: [],        // AI ile oluşturulanlar (kaydedilmemiş)
-  kayitliEtkinlikler: [], // sunucudan çekilenler
-  yukleniyor: false,
-  listelYukleniyor: false,
-  hata: "",
-  toast: null,
-  acikKartlar: {},
-  kaydediliyor: {},
-};
-
-// ---- TOAST ----
-function toastGoster(mesaj) {
-  state.toast = mesaj;
-  render();
-  setTimeout(function() { state.toast = null; render(); }, 2500);
-}
-
-// ---- API ----
-async function apiFetch(path, options) {
-  options = options || {};
-  const headers = Object.assign({ "Content-Type": "application/json" }, options.headers || {});
-  if (state.token) headers["Authorization"] = "Bearer " + state.token;
-  const res = await fetch(WORKER_URL + path, Object.assign({}, options, { headers: headers }));
-  return res.json();
-}
-
-async function kullaniciyiYukle() {
-  if (!state.token) return;
-  try {
-    const data = await apiFetch("/auth/me");
-    if (data.kullanici) {
-      state.kullanici = data.kullanici;
-      await etkinlikleriYukle();
-    } else {
-      cikisYap();
-    }
-  } catch (e) {
-    cikisYap();
-  }
-}
-
-async function etkinlikleriYukle() {
-  if (!state.kullanici) return;
-  state.listelYukleniyor = true;
-  render();
-  try {
-    const data = await apiFetch("/etkinlikler");
-    state.kayitliEtkinlikler = data.etkinlikler || [];
-  } catch (e) {
-    state.kayitliEtkinlikler = [];
-  }
-  state.listelYukleniyor = false;
-  render();
-}
-
-async function etkinlikKaydet(etkinlik) {
-  if (!state.kullanici) { toastGoster("⚠️ Önce giriş yapmalısın!"); return; }
-  state.kaydediliyor[etkinlik.id] = true;
-  render();
-  try {
-    const data = await apiFetch("/etkinlikler", {
-      method: "POST",
-      body: JSON.stringify(etkinlik),
-    });
-    if (data.basarili) {
-      state.kayitliEtkinlikler.unshift(data.etkinlik);
-      toastGoster("✅ Etkinlik kaydedildi!");
-    }
-  } catch (e) {
-    toastGoster("⚠️ Kayıt başarısız.");
-  }
-  state.kaydediliyor[etkinlik.id] = false;
-  render();
-}
-
-async function etkinlikSil(id, kayitlidan) {
-  if (kayitlidan) {
-    try {
-      await apiFetch("/etkinlikler/" + id, { method: "DELETE" });
-      state.kayitliEtkinlikler = state.kayitliEtkinlikler.filter(function(e) { return e.id !== id; });
-      toastGoster("🗑️ Etkinlik silindi.");
-    } catch (e) {
-      toastGoster("⚠️ Silinemedi.");
-    }
-  } else {
-    state.etkinlikler = state.etkinlikler.filter(function(e) { return e.id !== id; });
-  }
-  render();
-}
-
-function cikisYap() {
-  state.token = null;
-  state.kullanici = null;
-  state.kayitliEtkinlikler = [];
-  localStorage.removeItem("ea_token");
-  render();
-}
-
-function etkinlikKopyala(etkinlik) {
-  var metin = "🎓 " + etkinlik.baslik + "\n";
-  metin += "📅 " + etkinlik.yas + " | " + (KATEGORILER.find(function(k){return k.id===etkinlik.kategori;})||{}).label + " | ⏱ " + etkinlik.sure + "\n\n";
-  metin += "🎯 Hedef: " + etkinlik.hedef + "\n\n";
-  metin += "📝 Açıklama: " + etkinlik.aciklama + "\n\n";
-  if (etkinlik.adimlar && etkinlik.adimlar.length) {
-    metin += "📋 Adımlar:\n";
-    etkinlik.adimlar.forEach(function(a, i) { metin += (i+1) + ". " + a + "\n"; });
-    metin += "\n";
-  }
-  if (etkinlik.malzemeler && etkinlik.malzemeler.length) {
-    metin += "🛠️ Malzemeler: " + etkinlik.malzemeler.join(", ") + "\n\n";
-  }
-  if (etkinlik.ipuclari) metin += "💡 İpucu: " + etkinlik.ipuclari;
-  navigator.clipboard.writeText(metin).then(function() { toastGoster("📋 Panoya kopyalandı!"); });
-}
-
-// ---- AI ETKİNLİK OLUŞTUR ----
-async function etkinlikOlustur() {
-  state.yukleniyor = true;
-  state.hata = "";
-  render();
-
-  var kat = KATEGORILER.find(function(k){ return k.id === state.form.kategori; }) || KATEGORILER[0];
-  var prompt = "Sen bir okul öncesi eğitim uzmanısın. Aşağıdaki kriterlere göre Türkçe bir etkinlik planı oluştur:\n\n"
-    + "- Yaş grubu: " + state.form.yas + "\n"
-    + "- Kategori: " + kat.label + "\n"
-    + "- Süre: " + state.form.sure + "\n"
-    + (state.form.tema ? "- Tema/Konu: " + state.form.tema + "\n" : "")
-    + (state.form.ozelIstek ? "- Özel istek: " + state.form.ozelIstek + "\n" : "")
-    + "\nSADECE şu JSON formatında yanıt ver, başka hiçbir şey yazma:\n"
-    + '{"baslik":"etkinlik adı","hedef":"tek cümlelik öğrenme hedefi","aciklama":"2-3 cümle açıklama","adimlar":["adım 1","adım 2","adım 3","adım 4","adım 5"],"malzemeler":["malzeme 1","malzeme 2","malzeme 3"],"ipuclari":"öğretmene ipucu"}';
-
-  try {
-    var res = await fetch(WORKER_URL + "/ai/etkinlik", {
-      method: "POST",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({
-        yas: state.form.yas,
-        kategori: state.form.kategori,
-        sure: state.form.sure,
-        tema: state.form.tema,
-        ozelIstek: state.form.ozelIstek,
-      })
-    });
-    var data = await res.json();
-    if (!data.basarili) throw new Error(data.hata || "Bilinmeyen hata");
-    var parsed = data.etkinlik;
-
-    var yeni = Object.assign({}, parsed, {
-      id: Date.now().toString(),
-      yas: state.form.yas,
-      kategori: state.form.kategori,
-      sure: state.form.sure,
-    });
-    state.etkinlikler.unshift(yeni);
-    state.sekme = "liste";
-  } catch (e) {
-    state.hata = "Etkinlik oluşturulamadı. Tekrar dene!";
-  }
-
-  state.yukleniyor = false;
-  render();
-}
-
-// ---- URL'DEN TOKEN OKU ----
-function urldenTokenAl() {
-  var params = new URLSearchParams(window.location.search);
-  var token = params.get("token");
-  var hata  = params.get("hata");
-  if (token) {
-    state.token = token;
-    localStorage.setItem("ea_token", token);
-    window.history.replaceState({}, "", window.location.pathname);
-  }
-  if (hata) {
-    state.hata = "Google girişi başarısız: " + hata;
-    window.history.replaceState({}, "", window.location.pathname);
-  }
-}
-
-// ---- RENDER ----
-function render() {
-  renderHeader();
-  renderApp();
-  if (state.toast) {
-    var eski = document.querySelector(".toast");
-    if (eski) eski.remove();
-    var t = document.createElement("div");
-    t.className = "toast";
-    t.textContent = state.toast;
-    document.body.appendChild(t);
-  } else {
-    var eski2 = document.querySelector(".toast");
-    if (eski2) eski2.remove();
-  }
-}
-
-function renderHeader() {
-  var header = document.getElementById("mainHeader");
-  if (!header) return;
-
-  if (state.kullanici) {
-    var sekmeler = [
-      { id: "olustur", label: "✨ Oluştur" },
-      { id: "liste",   label: "📝 (" + state.etkinlikler.length + ")" },
-      { id: "kayitli", label: "⭐ (" + state.kayitliEtkinlikler.length + ")" },
-    ];
-    var sekmeBtns = sekmeler.map(function(s) {
-      return '<button class="sekme-btn ' + (state.sekme === s.id ? "aktif" : "") + '" onclick="sekmeDegistir(\'' + s.id + '\')">' + s.label + '</button>';
-    }).join("");
-    header.innerHTML = '<div class="header-ust">'
-      + '<div class="header-logo"><h1>🌟 Etkinlik Atölyesi</h1></div>'
-      + '<div class="header-sag">'
-      + '<div class="kullanici-bilgi">'
-      + (state.kullanici.resim ? '<img src="' + state.kullanici.resim + '" alt="profil" />' : '')
-      + '<span>' + state.kullanici.ad.split(" ")[0] + '</span>'
-      + '</div>'
-      + '<button class="cikis-btn" onclick="cikisYap()">Çıkış</button>'
-      + '</div></div>'
-      + '<div class="header-sekmeler">' + sekmeBtns + '</div>';
-  } else {
-    var sekmeler2 = [
-      { id: "olustur", label: "✨ Oluştur" },
-      { id: "liste",   label: "📝 (" + state.etkinlikler.length + ")" },
-    ];
-    var btns2 = sekmeler2.map(function(s) {
-      return '<button class="sekme-btn ' + (state.sekme === s.id ? "aktif" : "") + '" onclick="sekmeDegistir(\'' + s.id + '\')">' + s.label + '</button>';
-    }).join("");
-    header.innerHTML = '<div class="header-ust">'
-      + '<div class="header-logo"><h1>🌟 Etkinlik Atölyesi</h1></div>'
-      + '<div class="header-sag">'
-      + '<a href="' + WORKER_URL + '/auth/google" class="google-btn" style="padding:7px 14px;font-size:13px;gap:6px;border-radius:12px;white-space:nowrap;">Google ile Giriş</a>'
-      + '</div></div>'
-      + '<div class="header-sekmeler">' + btns2 + '</div>';
-  }
-}
-
-function sekmeDegistir(s) { state.sekme = s; render(); }
-
-function renderApp() {
-  var app = document.getElementById("app");
-  if (state.sekme === "olustur") {
-    app.innerHTML = renderOlusturSekme();
-  } else if (state.sekme === "liste") {
-    app.innerHTML = renderListeSekme(state.etkinlikler, false);
-  } else if (state.sekme === "kayitli") {
-    app.innerHTML = renderListeSekme(state.kayitliEtkinlikler, true);
-  }
-  baglantilariKur();
-}
-
-function renderOlusturSekme() {
-  var html = '<main>';
-
-  // Hata
-  if (state.hata) html += '<div class="hata-kutu">⚠️ ' + state.hata + '</div>';
-
-  // Yaş
-  html += '<div class="kart"><h2>👶 Yaş Grubu</h2><div class="secim-grup">';
-  YASLAR.forEach(function(y) {
-    html += '<button class="secim-btn ' + (state.form.yas === y ? "aktif" : "") + '" onclick="formDegistir(\'yas\',\'' + y + '\')">' + y + '</button>';
-  });
-  html += '</div></div>';
-
-  // Kategori
-  html += '<div class="kart"><h2>🎯 Kategori</h2><div class="kategori-grid">';
-  KATEGORILER.forEach(function(k) {
-    var aktiRenk = state.form.kategori === k.id ? 'background:' + k.renk + ';border-color:' + k.renk + ';color:rgba(0,0,0,0.7)' : '';
-    html += '<button class="kategori-btn" style="' + aktiRenk + '" onclick="formDegistir(\'kategori\',\'' + k.id + '\')">' + k.label + '</button>';
-  });
-  html += '</div></div>';
-
-  // Süre + Tema/Özel
-  html += '<div class="iki-kolon">';
-
-  // Süre
-  html += '<div class="kart"><h2>⏱ Süre</h2>';
-  SURELER.forEach(function(s) {
-    html += '<button class="secim-btn ' + (state.form.sure === s ? "aktif" : "") + '" style="display:block;width:100%;margin-bottom:8px;text-align:left;" onclick="formDegistir(\'sure\',\'' + s + '\')">' + s + '</button>';
-  });
-  html += '</div>';
-
-  // Tema + Özel
-  html += '<div class="kart" style="display:flex;flex-direction:column;gap:16px;">'
-    + '<div><label>🌳 Tema (isteğe bağlı)</label><input id="inputTema" type="text" placeholder="örn: Bahar, Uzay, Hayvanlar..." value="' + escHtml(state.form.tema) + '" /></div>'
-    + '<div><label>💬 Özel İstek</label><textarea id="inputOzelIstek" rows="4" placeholder="örn: Dışarıda yapılabilsin...">' + escHtml(state.form.ozelIstek) + '</textarea></div>'
-    + '</div>';
-
-  html += '</div>'; // iki-kolon
-
-  // Giriş hatırlatma
-  if (!state.kullanici) {
-    html += '<div style="background:rgba(255,255,255,0.7);border-radius:16px;padding:14px 20px;margin-bottom:16px;font-size:13px;color:#636e72;text-align:center;">'
-      + '💡 Etkinlikleri hesabına kaydetmek için <a href="' + WORKER_URL + '/auth/google" style="color:var(--mavi);font-weight:700;">Google ile giriş yap</a>'
-      + '</div>';
-  }
-
-  // Oluştur butonu
-  html += '<button class="olustur-btn" id="olusturBtn" onclick="etkinlikOlustur()"'
-    + (state.yukleniyor ? ' disabled' : '') + '>'
-    + (state.yukleniyor ? '<span class="spinner"></span>Etkinlik oluşturuluyor...' : '✨ Etkinlik Oluştur')
-    + '</button>';
-
-  html += '</main>';
-  return html;
-}
-
-function renderListeSekme(liste, kayitlidan) {
-  var html = '<main>';
-  if (state.listelYukleniyor) {
-    html += '<div class="bos-durum"><span class="emoji">⏳</span><h2>Yükleniyor...</h2></div>';
-    html += '</main>';
-    return html;
-  }
-  if (liste.length === 0) {
-    html += '<div class="bos-durum"><span class="emoji">' + (kayitlidan ? "⭐" : "🎨") + '</span>'
-      + '<h2>' + (kayitlidan ? "Henüz kayıtlı etkinlik yok!" : "Henüz etkinlik oluşturmadın!") + '</h2>'
-      + '<p>' + (kayitlidan ? "Etkinlik oluştururken '⭐ Kaydet' butonuna tıkla." : "'Oluştur' sekmesinden ilk etkinliğini hazırla.") + '</p>'
-      + '</div>';
-  } else {
-    html += '<div class="etkinlik-grid">';
-    liste.forEach(function(e) { html += renderEtkinlikKart(e, kayitlidan); });
-    html += '</div>';
-  }
-  html += '</main>';
-  return html;
-}
-
-function renderEtkinlikKart(e, kayitlidan) {
-  var kat = KATEGORILER.find(function(k){ return k.id === e.kategori; }) || KATEGORILER[0];
-  var acik = state.acikKartlar[e.id];
-  var kaydediliyor = state.kaydediliyor[e.id];
-  var zatenKayitli = state.kayitliEtkinlikler.some(function(k){ return k.id === e.id; });
-
-  var html = '<div class="etkinlik-kart">'
-    + '<div class="etkinlik-kart-ust" style="background:' + kat.renk + '">'
-    + '<span class="kategori-label">' + kat.label + '</span>'
-    + '<div class="badges"><span class="badge">' + e.yas + '</span><span class="badge">⏱ ' + e.sure + '</span></div>'
-    + '</div>'
-    + '<div class="etkinlik-kart-icerik">'
-    + '<h3>' + escHtml(e.baslik) + '</h3>'
-    + '<p class="hedef">' + escHtml(e.hedef) + '</p>'
-    + '<button class="detay-toggle" onclick="kartToggle(\'' + e.id + '\')">'
-    + (acik ? "▲ Gizle" : "▼ Detayları Gör") + '</button>';
-
-  if (acik) {
-    html += '<div class="detay-bolum">';
-    if (e.aciklama) html += '<div><span class="detay-baslik">Açıklama</span><p>' + escHtml(e.aciklama) + '</p></div>';
-    if (e.adimlar && e.adimlar.length) {
-      html += '<div><span class="detay-baslik">Adımlar</span><ol>';
-      e.adimlar.forEach(function(a){ html += '<li>' + escHtml(a) + '</li>'; });
-      html += '</ol></div>';
-    }
-    if (e.malzemeler && e.malzemeler.length) {
-      html += '<div><span class="detay-baslik">Malzemeler</span><div class="malzeme-list">';
-      e.malzemeler.forEach(function(m){ html += '<span class="malzeme-chip">📦 ' + escHtml(m) + '</span>'; });
-      html += '</div></div>';
-    }
-    if (e.ipuclari) html += '<div class="ipucu">💡 <strong>İpucu:</strong> ' + escHtml(e.ipuclari) + '</div>';
-    html += '</div>';
-  }
-
-  html += '</div>'; // icerik
-
-  // Alt butonlar
-  html += '<div class="kart-alt">';
-  html += '<button class="kopyala-btn" onclick="etkinlikKopyala(' + JSON.stringify(e).replace(/"/g, "&quot;") + ')">📋 Kopyala</button>';
-
-  if (!kayitlidan && state.kullanici) {
-    html += '<button class="kaydet-btn" onclick="etkinlikKaydet(' + JSON.stringify(e).replace(/"/g, "&quot;") + ')"'
-      + (kaydediliyor || zatenKayitli ? ' disabled' : '') + '>'
-      + (kaydediliyor ? '⏳...' : zatenKayitli ? '✅ Kaydedildi' : '⭐ Kaydet')
-      + '</button>';
-  }
-
-  html += '<button class="sil-btn" onclick="etkinlikSil(\'' + e.id + '\',' + kayitlidan + ')">🗑️</button>';
-  html += '</div></div>';
-  return html;
-}
-
-function kartToggle(id) {
-  state.acikKartlar[id] = !state.acikKartlar[id];
-  render();
-}
-
-function formDegistir(alan, deger) {
-  state.form[alan] = deger;
-  render();
-}
-
-function baglantilariKur() {
-  var inputTema = document.getElementById("inputTema");
-  if (inputTema) inputTema.addEventListener("input", function(e){ state.form.tema = e.target.value; });
-  var inputOzel = document.getElementById("inputOzelIstek");
-  if (inputOzel) inputOzel.addEventListener("input", function(e){ state.form.ozelIstek = e.target.value; });
-}
-
-function escHtml(str) {
-  if (!str) return "";
-  return String(str).replace(/&/g,"&amp;").replace(/</g,"&lt;").replace(/>/g,"&gt;").replace(/"/g,"&quot;");
-}
-
-// ---- BAŞLATICI ----
-urldenTokenAl();
-kullaniciyiYukle().then(function(){ render(); });
-if (!state.token) render();
-</script>
-<script>
-  if ("serviceWorker" in navigator) {
-    navigator.serviceWorker.register("sw.js").catch(function(e) { console.log("SW hata:", e); });
-  }
-</script>
-
-<footer style="background:#1a1a2e;margin-top:60px;padding:60px 24px 0;font-family:'Nunito',sans-serif;">
-  <div style="max-width:960px;margin:0 auto;">
-
-    <!-- Üst ayraç çizgisi -->
-    <div style="display:flex;align-items:center;gap:16px;margin-bottom:48px;">
-      <div style="height:1px;flex:1;background:linear-gradient(to right,transparent,#ffffff22);"></div>
-      <span style="font-family:'Baloo 2',cursive;font-size:13px;font-weight:700;color:#ffffff33;letter-spacing:3px;text-transform:uppercase;">SKYDIVEX STUDIO</span>
-      <div style="height:1px;flex:1;background:linear-gradient(to left,transparent,#ffffff22);"></div>
+<footer>
+  <div class="footer-ic">
+    <div class="footer-ayrac">
+      <div style="background:linear-gradient(to right,transparent,#ffffff22)"></div>
+      <span>SKYDIVEX STUDIO</span>
+      <div style="background:linear-gradient(to left,transparent,#ffffff22)"></div>
     </div>
-
-    <!-- Ana içerik -->
-    <div style="display:flex;flex-wrap:wrap;gap:80px;margin-bottom:48px;">
-
-      <!-- Marka -->
+    <div class="footer-grid">
       <div style="flex:2;min-width:200px;">
-        <div style="font-family:'Baloo 2',cursive;font-size:26px;font-weight:800;color:white;letter-spacing:-0.5px;margin-bottom:12px;">⚡ SKYDIVEX</div>
-        <p style="font-size:13px;color:#8892a4;line-height:1.8;max-width:260px;margin-bottom:20px;">
-          Oyun, müzik ve görsel sanat alanlarında özgün deneyimler tasarlayan bağımsız bir yaratıcı stüdyo.
-        </p>
-        <a href="mailto:enesseker2113@gmail.com" style="display:inline-block;font-size:12px;color:#74b9ff;text-decoration:none;border:1px solid #74b9ff33;border-radius:8px;padding:8px 16px;letter-spacing:0.5px;transition:all 0.2s;">
-          enesseker2113@gmail.com
-        </a>
+        <div style="font-family:'Baloo 2',cursive;font-size:26px;font-weight:800;color:white;margin-bottom:12px;">⚡ SKYDIVEX</div>
+        <p style="font-size:13px;color:#8892a4;line-height:1.8;max-width:260px;margin-bottom:20px;">Oyun, müzik ve görsel sanat alanlarında özgün deneyimler tasarlayan bağımsız bir yaratıcı stüdyo.</p>
+        <a href="mailto:enesseker2113@gmail.com" style="display:inline-block;font-size:12px;color:#74b9ff;text-decoration:none;border:1px solid #74b9ff33;border-radius:8px;padding:8px 16px;">enesseker2113@gmail.com</a>
       </div>
-
-      <!-- Ürünler -->
       <div style="flex:1;min-width:140px;">
         <div style="font-size:11px;font-weight:700;color:#8892a4;text-transform:uppercase;letter-spacing:2px;margin-bottom:20px;padding-bottom:8px;border-bottom:1px solid #ffffff11;">Ürünler</div>
         <div style="display:flex;flex-direction:column;gap:14px;">
           <a href="https://skydivex.github.io/mathgame" target="_blank" style="text-decoration:none;display:flex;align-items:center;gap:10px;">
             <span style="width:32px;height:32px;background:#ffffff0d;border-radius:8px;display:flex;align-items:center;justify-content:center;font-size:16px;">🧮</span>
-            <div>
-              <div style="font-size:13px;font-weight:700;color:#edf2f4;">MathGame</div>
-              <div style="font-size:11px;color:#8892a4;">Eğitim & Oyun</div>
-            </div>
+            <div><div style="font-size:13px;font-weight:700;color:#edf2f4;">MathGame</div><div style="font-size:11px;color:#8892a4;">Eğitim &amp; Oyun</div></div>
           </a>
           <div style="display:flex;align-items:center;gap:10px;opacity:0.6;">
             <span style="width:32px;height:32px;background:#ffffff0d;border-radius:8px;display:flex;align-items:center;justify-content:center;font-size:16px;">🏛️</span>
             <div>
               <div style="display:flex;align-items:center;gap:6px;">
                 <div style="font-size:13px;font-weight:700;color:#edf2f4;">PANTHEON</div>
-                <span style="font-size:9px;font-weight:700;color:#fdcb6e;background:#fdcb6e22;border:1px solid #fdcb6e44;border-radius:4px;padding:1px 5px;letter-spacing:0.5px;">GELİŞTİRİLİYOR</span>
+                <span style="font-size:9px;font-weight:700;color:#fdcb6e;background:#fdcb6e22;border:1px solid #fdcb6e44;border-radius:4px;padding:1px 5px;">GELİŞTİRİLİYOR</span>
               </div>
               <div style="font-size:11px;color:#8892a4;">Oyun Kütüphanesi</div>
             </div>
           </div>
           <a href="https://skydivex.github.io/etkinlik-d-nyam" target="_blank" style="text-decoration:none;display:flex;align-items:center;gap:10px;">
             <span style="width:32px;height:32px;background:#ffffff0d;border-radius:8px;display:flex;align-items:center;justify-content:center;font-size:16px;">🌟</span>
-            <div>
-              <div style="font-size:13px;font-weight:700;color:#edf2f4;">Etkinlik Atölyesi</div>
-              <div style="font-size:11px;color:#8892a4;">Okul Öncesi</div>
-            </div>
+            <div><div style="font-size:13px;font-weight:700;color:#edf2f4;">Etkinlik Atölyesi</div><div style="font-size:11px;color:#8892a4;">Okul Öncesi</div></div>
           </a>
         </div>
       </div>
-
-      <!-- Studio -->
       <div style="flex:1;min-width:140px;">
         <div style="font-size:11px;font-weight:700;color:#8892a4;text-transform:uppercase;letter-spacing:2px;margin-bottom:20px;padding-bottom:8px;border-bottom:1px solid #ffffff11;">Stüdyo</div>
         <div style="display:flex;flex-direction:column;gap:12px;">
-          <a href="https://github.com/skydivex" target="_blank" style="font-size:13px;color:#8892a4;text-decoration:none;font-weight:600;transition:color 0.2s;">GitHub</a>
+          <a href="https://github.com/skydivex" target="_blank" style="font-size:13px;color:#8892a4;text-decoration:none;font-weight:600;">GitHub</a>
           <span style="font-size:13px;color:#8892a4;font-weight:600;">Türkiye</span>
           <span style="font-size:13px;color:#8892a4;font-weight:600;">Bağımsız · 2024–</span>
         </div>
       </div>
-
     </div>
-
-    <!-- Alt çizgi -->
-    <div style="border-top:1px solid #ffffff0f;padding:20px 0;display:flex;flex-wrap:wrap;justify-content:space-between;align-items:center;gap:8px;">
-      <span style="font-size:12px;color:#8892a4;">© 2026 SKYDIVEX. Tüm hakları saklıdır.</span>
-
-    </div>
-
+    <div class="footer-alt"><span>© 2026 SKYDIVEX. Tüm hakları saklıdır.</span></div>
   </div>
 </footer>
 
+<script>
+var WORKER_URL = "https://etkinlik-auth.enesseker2113-599.workers.dev";
+var KATEGORILER = [
+  { id:"sanat",     label:"🎨 Sanat & El Sanatları", renk:"#FF6B6B" },
+  { id:"matematik", label:"🔢 Matematik & Sayılar",  renk:"#4ECDC4" },
+  { id:"dil",       label:"📖 Dil & Hikaye",         renk:"#45B7D1" },
+  { id:"muzik",     label:"🎵 Müzik & Ritim",        renk:"#96CEB4" },
+  { id:"fen",       label:"🔬 Fen & Doğa",           renk:"#FFEAA7" },
+  { id:"motor",     label:"🤸 Motor Beceriler",       renk:"#DDA0DD" },
+  { id:"sosyal",    label:"👫 Sosyal & Duygusal",     renk:"#F0E68C" },
+  { id:"oyun",      label:"🎮 Oyun & Hareket",        renk:"#98FB98" },
+];
+var YASLAR  = ["3 yaş","4 yaş","5 yaş","6 yaş"];
+var SURELER = ["15 dakika","30 dakika","45 dakika","1 saat"];
+
+var state = {
+  kullanici: null, token: localStorage.getItem("ea_token") || null,
+  sekme: "galeri",
+  form: { yas:"4 yaş", kategori:"sanat", sure:"30 dakika", tema:"", ozelIstek:"" },
+  etkinlikler: [], kayitliEtkinlikler: [], galeri: [], galeriKategori: "",
+  yukleniyor: false, listelYukleniyor: false, galeriYukleniyor: false,
+  hata: "", toast: null, acikKartlar: {}, kaydediliyor: {}, paylasimModal: null,
+};
+
+// ---- API ----
+async function apiFetch(path, opts) {
+  opts = opts || {};
+  var headers = Object.assign({"Content-Type":"application/json"}, opts.headers || {});
+  if (state.token) headers["Authorization"] = "Bearer " + state.token;
+  var res = await fetch(WORKER_URL + path, Object.assign({}, opts, { headers: headers }));
+  return res.json();
+}
+
+async function kullaniciyiYukle() {
+  if (!state.token) return;
+  try {
+    var data = await apiFetch("/auth/me");
+    if (data.kullanici) {
+      state.kullanici = data.kullanici;
+      await Promise.all([etkinlikleriYukle(), galeriYukle()]);
+    } else { cikisYap(); }
+  } catch(e) { cikisYap(); }
+}
+
+async function etkinlikleriYukle() {
+  if (!state.kullanici) return;
+  state.listelYukleniyor = true; render();
+  try {
+    var d = await apiFetch("/etkinlikler");
+    state.kayitliEtkinlikler = d.etkinlikler || [];
+  } catch(e) { state.kayitliEtkinlikler = []; }
+  state.listelYukleniyor = false; render();
+}
+
+async function galeriYukle() {
+  state.galeriYukleniyor = true; render();
+  try {
+    var url = "/galeri" + (state.galeriKategori ? "?kategori=" + state.galeriKategori : "");
+    var d = await apiFetch(url);
+    state.galeri = d.etkinlikler || [];
+  } catch(e) { state.galeri = []; }
+  state.galeriYukleniyor = false; render();
+}
+
+async function etkinlikKaydet(etkinlik) {
+  if (!state.kullanici) { toast("⚠️ Önce giriş yapmalısın!"); return; }
+  state.kaydediliyor[etkinlik.id] = true; render();
+  try {
+    var d = await apiFetch("/etkinlikler", { method:"POST", body:JSON.stringify(etkinlik) });
+    if (d.basarili) { state.kayitliEtkinlikler.unshift(d.etkinlik); toast("✅ Kaydedildi!"); }
+  } catch(e) { toast("⚠️ Kayıt başarısız."); }
+  state.kaydediliyor[etkinlik.id] = false; render();
+}
+
+async function galeridenKaydet(etkinlik) {
+  if (!state.kullanici) { toast("⚠️ Önce giriş yapmalısın!"); return; }
+  state.kaydediliyor[etkinlik.id] = true; render();
+  try {
+    var d = await apiFetch("/galeri/kaydet", { method:"POST", body:JSON.stringify({ etkinlikId: etkinlik.id }) });
+    if (d.basarili) { state.kayitliEtkinlikler.unshift(d.etkinlik); toast("⭐ Hesabına kaydedildi!"); }
+    else toast("⚠️ " + (d.hata || "Hata"));
+  } catch(e) { toast("⚠️ Hata."); }
+  state.kaydediliyor[etkinlik.id] = false; render();
+}
+
+async function etkinlikSil(id) {
+  try {
+    await apiFetch("/etkinlikler/" + id, { method:"DELETE" });
+    state.kayitliEtkinlikler = state.kayitliEtkinlikler.filter(function(e){ return e.id !== id; });
+    toast("🗑️ Silindi.");
+  } catch(e) { toast("⚠️ Silinemedi."); }
+  render();
+}
+
+async function gizlilikGuncelle(gizlilik) {
+  try {
+    var d = await apiFetch("/profil", { method:"PUT", body:JSON.stringify({ gizlilik: gizlilik }) });
+    if (d.basarili) { state.kullanici.gizlilik = gizlilik; toast(gizlilik === "private" ? "🔒 Hesap gizlendi" : "🌍 Hesap herkese açıldı"); }
+  } catch(e) { toast("⚠️ Hata."); }
+  render();
+}
+
+async function etkinlikOlustur() {
+  state.yukleniyor = true; state.hata = ""; render();
+  try {
+    var d = await apiFetch("/ai/etkinlik", { method:"POST", body:JSON.stringify(state.form) });
+    if (!d.basarili) throw new Error(d.hata);
+    var yeni = Object.assign({}, d.etkinlik, { id: Date.now().toString(), yas:state.form.yas, kategori:state.form.kategori, sure:state.form.sure });
+    state.etkinlikler.unshift(yeni);
+    state.sekme = "liste";
+  } catch(e) { state.hata = "Etkinlik oluşturulamadı. Tekrar dene!"; }
+  state.yukleniyor = false; render();
+}
+
+function cikisYap() {
+  state.token = null; state.kullanici = null; state.kayitliEtkinlikler = [];
+  localStorage.removeItem("ea_token"); render();
+}
+
+function etkinlikKopyala(e) {
+  var t = "🎓 " + e.baslik + "\n📅 " + e.yas + " | " + e.sure + "\n\n🎯 " + e.hedef + "\n\n📝 " + e.aciklama;
+  if (e.adimlar) t += "\n\n📋 Adımlar:\n" + e.adimlar.map(function(a,i){ return (i+1)+". "+a; }).join("\n");
+  if (e.malzemeler) t += "\n\n🛠️ " + e.malzemeler.join(", ");
+  navigator.clipboard.writeText(t).then(function(){ toast("📋 Kopyalandı!"); });
+}
+
+function etkinlikIndir(e) {
+  var kat = KATEGORILER.find(function(k){ return k.id === e.kategori; }) || KATEGORILER[0];
+  var html = '<!DOCTYPE html><html lang="tr"><head><meta charset="UTF-8"><title>' + esc(e.baslik) + '</title><style>body{font-family:Arial,sans-serif;max-width:600px;margin:40px auto;padding:20px;color:#2d3436}h1{color:#2d3436;border-bottom:3px solid ' + kat.renk + ';padding-bottom:10px}.meta{background:#f8f9fa;border-radius:8px;padding:10px;margin:10px 0;font-size:14px}.adim{padding:6px 0;font-size:14px}.malzeme{display:inline-block;background:#f0f0f0;border-radius:6px;padding:3px 8px;margin:3px;font-size:13px}.ipucu{background:#fff9c4;border-radius:8px;padding:10px;margin-top:10px;font-size:13px}.footer{text-align:center;margin-top:30px;font-size:11px;color:#b2bec3}</style></head><body>';
+  html += '<h1>' + esc(e.baslik) + '</h1>';
+  html += '<div class="meta">👶 ' + esc(e.yas) + ' &nbsp;|&nbsp; ' + esc(kat.label) + ' &nbsp;|&nbsp; ⏱ ' + esc(e.sure) + '</div>';
+  html += '<p><strong>🎯 Hedef:</strong> ' + esc(e.hedef) + '</p>';
+  html += '<p style="margin-top:10px">' + esc(e.aciklama) + '</p>';
+  if (e.adimlar) { html += '<h3>📋 Adımlar</h3><ol>'; e.adimlar.forEach(function(a){ html += '<li class="adim">' + esc(a) + '</li>'; }); html += '</ol>'; }
+  if (e.malzemeler) { html += '<h3>🛠️ Malzemeler</h3>'; e.malzemeler.forEach(function(m){ html += '<span class="malzeme">' + esc(m) + '</span>'; }); }
+  if (e.ipuclari) html += '<div class="ipucu">💡 <strong>İpucu:</strong> ' + esc(e.ipuclari) + '</div>';
+  html += '<div class="footer">Etkinlik Atölyesi · SKYDIVEX</div></body></html>';
+  var blob = new Blob([html], { type:"text/html;charset=utf-8" });
+  var a = document.createElement("a");
+  a.href = URL.createObjectURL(blob);
+  a.download = e.baslik.replace(/[^a-z0-9çğışöü ]/gi,"").replace(/ /g,"_") + ".html";
+  a.click();
+  toast("📥 İndirildi!");
+}
+
+function paylasimAc(e) { state.paylasimModal = e; render(); }
+function paylasimKapat() { state.paylasimModal = null; render(); }
+
+function paylasimMetni(e) {
+  return "🌟 " + e.baslik + "\n👶 " + e.yas + " | ⏱ " + e.sure + "\n\n" + e.hedef + "\n\nEtkinlik Atölyesi'nde keşfet: https://skydivex.github.io/etkinlik-d-nyam";
+}
+
+function toast(msg) { state.toast = msg; render(); setTimeout(function(){ state.toast = null; render(); }, 2500); }
+function esc(s) { return String(s||"").replace(/&/g,"&amp;").replace(/</g,"&lt;").replace(/>/g,"&gt;").replace(/"/g,"&quot;"); }
+function sekmeDegistir(s) { state.sekme = s; if (s === "galeri") galeriYukle(); render(); }
+function kartToggle(id) { state.acikKartlar[id] = !state.acikKartlar[id]; render(); }
+function formDegistir(alan, deger) { state.form[alan] = deger; render(); }
+
+// ---- RENDER ----
+function render() {
+  renderHeader();
+  var app = document.getElementById("app");
+  if (state.sekme === "olustur") app.innerHTML = renderOlustur();
+  else if (state.sekme === "liste") app.innerHTML = renderListe(state.etkinlikler, false);
+  else if (state.sekme === "kayitli") app.innerHTML = renderListe(state.kayitliEtkinlikler, true);
+  else if (state.sekme === "galeri") app.innerHTML = renderGaleri();
+  else if (state.sekme === "profil") app.innerHTML = renderProfil();
+  baglantilariKur();
+  if (state.paylasimModal) renderModal();
+  else { var m = document.getElementById("modal"); if (m) m.remove(); }
+  var t = document.querySelector(".toast");
+  if (t) t.remove();
+  if (state.toast) { var td = document.createElement("div"); td.className = "toast"; td.textContent = state.toast; document.body.appendChild(td); }
+}
+
+function renderHeader() {
+  var header = document.getElementById("mainHeader");
+  var sekmeler = state.kullanici
+    ? [ {id:"galeri",label:"🌍 Keşfet"}, {id:"olustur",label:"✨ Oluştur"}, {id:"liste",label:"📝 ("+state.etkinlikler.length+")"}, {id:"kayitli",label:"⭐ ("+state.kayitliEtkinlikler.length+")"}, {id:"profil",label:"👤 Profil"} ]
+    : [ {id:"galeri",label:"🌍 Keşfet"}, {id:"olustur",label:"✨ Oluştur"}, {id:"liste",label:"📝 ("+state.etkinlikler.length+")"} ];
+  var btns = sekmeler.map(function(s){ return '<button class="sekme-btn '+(state.sekme===s.id?"aktif":"")+'" onclick="sekmeDegistir(\''+s.id+'\')">'+s.label+'</button>'; }).join("");
+  var sag = state.kullanici
+    ? '<div class="kullanici-bilgi" onclick="sekmeDegistir(\'profil\')">'+(state.kullanici.resim?'<img src="'+state.kullanici.resim+'" alt="profil"/>':"")+'<span>'+state.kullanici.ad.split(" ")[0]+'</span></div><button class="cikis-btn" onclick="cikisYap()">Çıkış</button>'
+    : '<a href="'+WORKER_URL+'/auth/google" class="google-btn" style="padding:7px 14px;font-size:12px;gap:6px;border-radius:10px;white-space:nowrap;border-width:1.5px;">Google ile Giriş</a>';
+  header.innerHTML = '<div class="header-ust"><div class="header-logo"><h1>🌟 Etkinlik Atölyesi</h1></div><div class="header-sag">'+sag+'</div></div><div class="header-sekmeler">'+btns+'</div>';
+}
+
+function renderOlustur() {
+  var h = '<main>';
+  if (!state.kullanici) h += '<div style="background:rgba(255,255,255,0.7);border-radius:14px;padding:12px 18px;margin-bottom:14px;font-size:13px;color:#636e72;text-align:center;">💡 Etkinlikleri kaydetmek için <a href="'+WORKER_URL+'/auth/google" style="color:var(--mavi);font-weight:700;">Google ile giriş yap</a></div>';
+  if (state.hata) h += '<div class="hata">⚠️ '+state.hata+'</div>';
+  h += '<div class="kart"><h2>👶 Yaş Grubu</h2><div class="secim-grup">';
+  YASLAR.forEach(function(y){ h += '<button class="secim-btn '+(state.form.yas===y?"aktif":"")+'" onclick="formDegistir(\'yas\',\''+y+'\')">'+y+'</button>'; });
+  h += '</div></div><div class="kart"><h2>🎯 Kategori</h2><div class="kategori-grid">';
+  KATEGORILER.forEach(function(k){ var s = state.form.kategori===k.id ? 'background:'+k.renk+';border-color:'+k.renk+';color:rgba(0,0,0,0.7)' : ''; h += '<button class="kategori-btn" style="'+s+'" onclick="formDegistir(\'kategori\',\''+k.id+'\')">'+k.label+'</button>'; });
+  h += '</div></div><div class="iki-kolon"><div class="kart"><h2>⏱ Süre</h2>';
+  SURELER.forEach(function(s){ h += '<button class="secim-btn '+(state.form.sure===s?"aktif":"")+'" style="display:block;width:100%;margin-bottom:8px;text-align:left;" onclick="formDegistir(\'sure\',\''+s+'\')">'+s+'</button>'; });
+  h += '</div><div class="kart" style="display:flex;flex-direction:column;gap:14px;"><div><label>🌳 Tema</label><input id="inTema" type="text" placeholder="örn: Bahar, Uzay..." value="'+esc(state.form.tema)+'"/></div><div><label>💬 Özel İstek</label><textarea id="inOzel" rows="3" placeholder="örn: Dışarıda yapılabilsin...">'+esc(state.form.ozelIstek)+'</textarea></div></div></div>';
+  h += '<button class="btn-ana" '+(state.yukleniyor?"disabled":"")+' onclick="etkinlikOlustur()">'+(state.yukleniyor?'<span class="spinner"></span>Oluşturuluyor...':'✨ Etkinlik Oluştur')+'</button></main>';
+  return h;
+}
+
+function renderListe(liste, kayitlidan) {
+  var h = '<main>';
+  if (state.listelYukleniyor) return h + '<div class="bos"><span class="emoji">⏳</span><h2>Yükleniyor...</h2></div></main>';
+  if (!liste.length) return h + '<div class="bos"><span class="emoji">'+(kayitlidan?"⭐":"🎨")+'</span><h2>'+(kayitlidan?"Henüz kayıtlı etkinlik yok!":"Henüz etkinlik oluşturmadın!")+'</h2><p>'+(kayitlidan?"Galeriden etkinlik kaydedebilirsin.":"Oluştur sekmesinden başla.")+'</p></div></main>';
+  h += '<div class="etkinlik-grid">';
+  liste.forEach(function(e){ h += renderEtkinlikKart(e, kayitlidan, false); });
+  h += '</div></main>';
+  return h;
+}
+
+function renderGaleri() {
+  var h = '<main>';
+  h += '<div class="galeri-filtre"><button class="secim-btn '+(state.galeriKategori===""?"aktif":"")+'" onclick="galeriFiltre(\'\')">Tümü</button>';
+  KATEGORILER.forEach(function(k){ h += '<button class="sekme-btn '+(state.galeriKategori===k.id?"aktif":"")+'" onclick="galeriFiltre(\''+k.id+'\')">'+k.label+'</button>'; });
+  h += '</div>';
+  if (state.galeriYukleniyor) return h + '<div class="bos"><span class="emoji">⏳</span><h2>Yükleniyor...</h2></div></main>';
+  if (!state.galeri.length) return h + '<div class="bos"><span class="emoji">🌍</span><h2>Henüz paylaşılan etkinlik yok!</h2><p>İlk etkinliği sen oluştur ve paylaş.</p></div></main>';
+  h += '<div class="etkinlik-grid">';
+  state.galeri.forEach(function(e){ h += renderEtkinlikKart(e, false, true); });
+  h += '</div></main>';
+  return h;
+}
+
+function galeriFiltre(kategori) { state.galeriKategori = kategori; galeriYukle(); }
+
+function renderProfil() {
+  if (!state.kullanici) return '<main><div class="bos"><span class="emoji">👤</span><h2>Giriş yapmalısın!</h2></div></main>';
+  var k = state.kullanici;
+  var gizliMi = k.gizlilik === "private";
+  var h = '<main><div class="profil-kart">';
+  h += '<div class="profil-ust">'+(k.resim?'<img src="'+k.resim+'" alt="profil"/>':'')+'<div><h2>'+esc(k.ad)+'</h2><p>'+esc(k.email)+'</p></div></div>';
+  h += '<div class="profil-stats"><div class="profil-stat"><strong>'+state.kayitliEtkinlikler.length+'</strong><span>Etkinlik</span></div><div class="profil-stat"><strong>'+(gizliMi?"🔒":"🌍")+'</strong><span>'+(gizliMi?"Gizli":"Herkese Açık")+'</span></div></div>';
+  h += '<div class="gizlilik-toggle"><span>'+(gizliMi?"🔒 Hesabın gizli":"🌍 Hesabın herkese açık")+'</span>';
+  h += '<label class="toggle"><input type="checkbox" '+(gizliMi?"":"checked")+' onchange="gizlilikGuncelle(this.checked?\'public\':\'private\')"><span class="toggle-slider"></span></label>';
+  h += '<span style="font-size:12px;color:var(--gri);">'+(gizliMi?"Etkinliklerin galeride görünmüyor":"Etkinliklerin galeride görünüyor")+'</span></div>';
+  if (k.bio !== undefined) h += '<p style="font-size:13px;color:var(--gri);margin-top:8px;">'+esc(k.bio||"Bio henüz eklenmedi.")+'</p>';
+  h += '</div>';
+  if (state.kayitliEtkinlikler.length) {
+    h += '<div class="etkinlik-grid">';
+    state.kayitliEtkinlikler.forEach(function(e){ h += renderEtkinlikKart(e, true, false); });
+    h += '</div>';
+  }
+  h += '</main>';
+  return h;
+}
+
+function renderEtkinlikKart(e, kayitlidan, galeriden) {
+  var kat = KATEGORILER.find(function(k){ return k.id===e.kategori; }) || KATEGORILER[0];
+  var acik = state.acikKartlar[e.id];
+  var kaydediliyor = state.kaydediliyor[e.id];
+  var zatenKayitli = state.kayitliEtkinlikler.some(function(k){ return k.id===e.id || k.orijinalId===e.id; });
+  var h = '<div class="etkinlik-kart"><div class="etkinlik-kart-ust" style="background:'+kat.renk+'"><span class="kat-label">'+kat.label+'</span><div class="badges"><span class="badge">'+esc(e.yas)+'</span><span class="badge">⏱ '+esc(e.sure)+'</span></div></div>';
+  h += '<div class="etkinlik-kart-icerik"><h3>'+esc(e.baslik)+'</h3>';
+  if (galeriden && e.sahipAd) h += '<div class="sahip-bilgi">'+(e.sahipResim?'<img src="'+e.sahipResim+'" alt=""/>':'')+'<span>'+esc(e.sahipAd)+'</span></div>';
+  if (e.orijinalSahip) h += '<div class="orijinal-badge">📌 '+esc(e.orijinalSahip)+' tarafından oluşturuldu</div>';
+  h += '<p class="hedef">'+esc(e.hedef)+'</p>';
+  h += '<button class="detay-toggle" onclick="kartToggle(\''+e.id+'\')">'+( acik?"▲ Gizle":"▼ Detaylar")+'</button>';
+  if (acik) {
+    h += '<div class="detay-bolum">';
+    if (e.aciklama) h += '<div><span class="detay-baslik">Açıklama</span><p>'+esc(e.aciklama)+'</p></div>';
+    if (e.adimlar && e.adimlar.length) { h += '<div><span class="detay-baslik">Adımlar</span><ol>'; e.adimlar.forEach(function(a){ h += '<li>'+esc(a)+'</li>'; }); h += '</ol></div>'; }
+    if (e.malzemeler && e.malzemeler.length) { h += '<div><span class="detay-baslik">Malzemeler</span><div class="malzeme-list">'; e.malzemeler.forEach(function(m){ h += '<span class="malzeme-chip">'+esc(m)+'</span>'; }); h += '</div></div>'; }
+    if (e.ipuclari) h += '<div class="ipucu">💡 <strong>İpucu:</strong> '+esc(e.ipuclari)+'</div>';
+    h += '</div>';
+  }
+  h += '</div><div class="kart-alt">';
+  h += '<button class="btn-kucuk" onclick="etkinlikKopyala('+JSON.stringify(e).replace(/"/g,"&quot;")+')" >📋</button>';
+  h += '<button class="btn-indir" onclick="etkinlikIndir('+JSON.stringify(e).replace(/"/g,"&quot;")+')" >📥 İndir</button>';
+  h += '<button class="btn-paylasim" onclick="paylasimAc('+JSON.stringify(e).replace(/"/g,"&quot;")+')">🔗 Paylaş</button>';
+  if (galeriden) {
+    h += '<button class="btn-yesil" onclick="galeridenKaydet('+JSON.stringify(e).replace(/"/g,"&quot;")+')" '+(kaydediliyor||zatenKayitli?"disabled":"")+'>'+( kaydediliyor?"⏳":zatenKayitli?"✅":"⭐ Kaydet")+'</button>';
+  } else if (!kayitlidan && state.kullanici) {
+    h += '<button class="btn-yesil" onclick="etkinlikKaydet('+JSON.stringify(e).replace(/"/g,"&quot;")+')" '+(kaydediliyor||zatenKayitli?"disabled":"")+'>'+( kaydediliyor?"⏳":zatenKayitli?"✅":"⭐ Kaydet")+'</button>';
+  }
+  if (kayitlidan) h += '<button class="btn-kirmizi" onclick="etkinlikSil(\''+e.id+'\')">🗑️</button>';
+  h += '</div></div>';
+  return h;
+}
+
+function renderModal() {
+  var e = state.paylasimModal;
+  var metin = paylasimMetni(e);
+  var url = "https://skydivex.github.io/etkinlik-d-nyam";
+  var wa = "https://api.whatsapp.com/send?text=" + encodeURIComponent(metin);
+  var tg = "https://t.me/share/url?url=" + encodeURIComponent(url) + "&text=" + encodeURIComponent("🌟 " + e.baslik + "\n" + e.hedef);
+  var tw = "https://twitter.com/intent/tweet?text=" + encodeURIComponent("🌟 " + e.baslik + " #OkulÖncesi #Etkinlik") + "&url=" + encodeURIComponent(url);
+  var old = document.getElementById("modal");
+  if (old) old.remove();
+  var div = document.createElement("div");
+  div.id = "modal";
+  div.className = "modal-bg";
+  div.innerHTML = '<div class="modal"><h3>🔗 Etkinliği Paylaş</h3><div class="paylasim-secenekler"><a class="paylasim-btn" href="'+wa+'" target="_blank"><span class="icon">💬</span> WhatsApp</a><a class="paylasim-btn" href="'+tg+'" target="_blank"><span class="icon">✈️</span> Telegram</a><a class="paylasim-btn" href="'+tw+'" target="_blank"><span class="icon">🐦</span> Twitter / X</a><button class="paylasim-btn" onclick="navigator.clipboard.writeText(\''+metin.replace(/'/g,"\\'").replace(/\n/g,"\\n")+'\');toast(\'📋 Kopyalandı!\');"><span class="icon">📋</span> Metni Kopyala</button></div><button class="modal-kapat" onclick="paylasimKapat()">Kapat</button></div>';
+  div.addEventListener("click", function(ev){ if (ev.target===div) paylasimKapat(); });
+  document.body.appendChild(div);
+}
+
+function baglantilariKur() {
+  var t = document.getElementById("inTema"); if (t) t.addEventListener("input", function(e){ state.form.tema = e.target.value; });
+  var o = document.getElementById("inOzel"); if (o) o.addEventListener("input", function(e){ state.form.ozelIstek = e.target.value; });
+}
+
+function urldenTokenAl() {
+  var p = new URLSearchParams(window.location.search);
+  var token = p.get("token"); var hata = p.get("hata");
+  if (token) { state.token = token; localStorage.setItem("ea_token", token); window.history.replaceState({}, "", window.location.pathname); }
+  if (hata) { state.hata = "Google girişi başarısız: " + hata; window.history.replaceState({}, "", window.location.pathname); }
+}
+
+urldenTokenAl();
+kullaniciyiYukle().then(function(){ render(); });
+if (!state.token) render();
+</script>
+
+<script>
+  if ("serviceWorker" in navigator) {
+    navigator.serviceWorker.register("sw.js").catch(function(e){ console.log("SW hata:", e); });
+  }
+</script>
 </body>
 </html>
