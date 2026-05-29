@@ -148,9 +148,92 @@
     .paylasim-btn .icon { font-size: 22px; }
     .modal-kapat { width: 100%; margin-top: 12px; padding: 10px; border: none; border-radius: 12px; background: var(--acik); font-family: 'Baloo 2', cursive; font-weight: 700; font-size: 14px; cursor: pointer; color: var(--gri); }
 
+    /* ARAMA ÇUBUĞU */
+    .arama-wrap { padding: 10px 16px 0; }
+    .arama-kap { position: relative; }
+    .arama-input { width: 100%; border: 2px solid #e9ecef; border-radius: 14px; padding: 10px 44px 10px 16px; font-family: 'Nunito', sans-serif; font-size: 14px; outline: none; color: var(--koyu); background: rgba(255,255,255,0.95); transition: border-color 0.15s, box-shadow 0.15s; }
+    .arama-input:focus { border-color: var(--mavi); box-shadow: 0 0 0 3px rgba(116,185,255,0.15); }
+    .arama-ikon { position: absolute; right: 14px; top: 50%; transform: translateY(-50%); font-size: 16px; pointer-events: none; }
+    .arama-sonuc { position: absolute; top: calc(100% + 6px); left: 0; right: 0; background: white; border-radius: 16px; box-shadow: 0 8px 32px rgba(0,0,0,0.13); z-index: 300; overflow: hidden; border: 1.5px solid #e9ecef; max-height: 420px; overflow-y: auto; }
+    .arama-bolum-baslik { font-size: 10px; font-weight: 800; color: #b2bec3; text-transform: uppercase; letter-spacing: 1.5px; padding: 10px 16px 4px; background: #f8f9fa; }
+    .arama-item { display: flex; align-items: center; gap: 10px; padding: 10px 16px; cursor: pointer; transition: background 0.12s; border-bottom: 1px solid #f0f0f0; }
+    .arama-item:last-child { border-bottom: none; }
+    .arama-item:hover { background: #f0f8ff; }
+    .arama-item-ikon { width: 36px; height: 36px; border-radius: 10px; display: flex; align-items: center; justify-content: center; font-size: 18px; flex-shrink: 0; }
+    .arama-item-bilgi { flex: 1; min-width: 0; }
+    .arama-item-ad { font-size: 13px; font-weight: 700; color: var(--koyu); white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+    .arama-item-alt { font-size: 11px; color: var(--gri); }
+    .arama-google-link { display: flex; align-items: center; gap: 8px; padding: 12px 16px; background: #f8fffe; border-top: 2px solid #e9ecef; color: #2980b9; font-size: 12px; font-weight: 700; cursor: pointer; text-decoration: none; }
+    .arama-google-link:hover { background: #e8f4fd; }
+
+    /* GALERİ FİLTRE & SIRALAMA */
+    .galeri-kontrol { display: flex; align-items: center; gap: 8px; margin-bottom: 12px; flex-wrap: wrap; }
+    .filtre-kap { position: relative; }
+    .filtre-btn { display: flex; align-items: center; gap: 6px; background: white; border: 2px solid #e9ecef; border-radius: 12px; padding: 8px 14px; font-family: 'Baloo 2', cursive; font-weight: 700; font-size: 13px; cursor: pointer; color: var(--koyu); transition: all 0.15s; white-space: nowrap; }
+    .filtre-btn.aktif { border-color: var(--mavi); background: #f0f8ff; color: var(--mavi); }
+    .filtre-dropdown { position: absolute; top: calc(100% + 6px); left: 0; background: white; border-radius: 16px; box-shadow: 0 8px 32px rgba(0,0,0,0.13); z-index: 200; min-width: 200px; border: 1.5px solid #e9ecef; overflow: hidden; }
+    .filtre-chip { display: flex; align-items: center; gap: 8px; padding: 10px 16px; cursor: pointer; font-size: 13px; font-weight: 700; color: var(--koyu); transition: background 0.12s; border-bottom: 1px solid #f5f5f5; }
+    .filtre-chip:last-child { border-bottom: none; }
+    .filtre-chip:hover { background: #f0f8ff; }
+    .filtre-chip.secili { background: #e8f4ff; color: var(--mavi); }
+    .filtre-chip-renk { width: 12px; height: 12px; border-radius: 50%; flex-shrink: 0; }
+    .siralama-dropdown { min-width: 220px; }
+    .siralama-item { display: flex; align-items: center; justify-content: space-between; padding: 10px 16px; cursor: pointer; font-size: 13px; font-weight: 700; color: var(--koyu); transition: background 0.12s; border-bottom: 1px solid #f5f5f5; }
+    .siralama-item:last-child { border-bottom: none; }
+    .siralama-item:hover { background: #f0f8ff; }
+    .siralama-item.secili { background: #e8f4ff; color: var(--mavi); }
+    .yon-btn { background: white; border: 2px solid #e9ecef; border-radius: 10px; padding: 8px 10px; font-size: 16px; cursor: pointer; transition: all 0.15s; line-height: 1; }
+    .yon-btn:hover { border-color: var(--mavi); background: #f0f8ff; }
+
+    /* ROZETLer */
+    .rozet-satiri { display: flex; gap: 6px; flex-wrap: wrap; margin-top: 8px; }
+    .rozet { display: inline-flex; align-items: center; gap: 4px; border-radius: 20px; padding: 3px 10px; font-size: 11px; font-weight: 800; border: 2px solid transparent; cursor: default; transition: transform 0.15s; }
+    .rozet:hover { transform: scale(1.08); }
+    .rozet-ozel { background: linear-gradient(135deg, #ffecd2, #fcb69f); border-color: #f0a070; color: #7d3f00; box-shadow: 0 2px 8px rgba(240,160,112,0.35); }
+    .rozet-modal { background: rgba(0,0,0,0.55); position: fixed; inset: 0; z-index: 400; display: flex; align-items: center; justify-content: center; padding: 20px; }
+    .rozet-panel { background: white; border-radius: 24px; padding: 28px; max-width: 420px; width: 100%; box-shadow: 0 20px 60px rgba(0,0,0,0.2); }
+    .rozet-panel h3 { font-family: 'Baloo 2', cursive; font-size: 18px; font-weight: 800; color: var(--koyu); margin-bottom: 20px; }
+    .rozet-onizleme { display: flex; align-items: center; justify-content: center; padding: 20px; margin: 16px 0; background: var(--acik); border-radius: 14px; }
+    .rozet-ozel-buyuk { display: inline-flex; align-items: center; gap: 8px; border-radius: 28px; padding: 10px 22px; font-size: 16px; font-weight: 800; background: linear-gradient(135deg, #ffecd2, #fcb69f); border: 3px solid #f0a070; color: #7d3f00; box-shadow: 0 4px 16px rgba(240,160,112,0.4), 0 0 0 4px rgba(240,160,112,0.1); }
+    .renk-secici { display: flex; gap: 8px; flex-wrap: wrap; margin-top: 8px; }
+    .renk-top { width: 28px; height: 28px; border-radius: 50%; cursor: pointer; border: 3px solid transparent; transition: all 0.15s; }
+    .renk-top.secili { border-color: var(--koyu); transform: scale(1.2); }
+
+    /* PROFİL AYARLAR PANELİ */
+    .profil-panel-bg { position: fixed; inset: 0; background: rgba(0,0,0,0.45); z-index: 350; display: flex; align-items: flex-start; justify-content: flex-end; padding: 70px 16px 0; }
+    .profil-panel { background: white; border-radius: 20px; width: 300px; box-shadow: 0 12px 48px rgba(0,0,0,0.18); overflow: hidden; animation: slideDown 0.2s ease; }
+    @keyframes slideDown { from { opacity:0; transform:translateY(-8px); } to { opacity:1; transform:translateY(0); } }
+    .profil-panel-ust { padding: 20px; background: linear-gradient(135deg, var(--mavi), var(--mor)); color: white; display: flex; align-items: center; gap: 12px; }
+    .profil-panel-ust img { width: 48px; height: 48px; border-radius: 50%; border: 3px solid rgba(255,255,255,0.5); }
+    .profil-panel-ust h4 { font-family: 'Baloo 2', cursive; font-size: 16px; font-weight: 800; }
+    .profil-panel-ust p { font-size: 11px; opacity: 0.85; }
+    .profil-panel-menu { padding: 8px; }
+    .profil-menu-item { display: flex; align-items: center; gap: 10px; padding: 11px 14px; border-radius: 12px; cursor: pointer; font-size: 13px; font-weight: 700; color: var(--koyu); transition: background 0.12s; }
+    .profil-menu-item:hover { background: #f0f8ff; }
+    .profil-menu-item .icon { font-size: 18px; width: 24px; text-align: center; }
+    .profil-menu-ayrac { height: 1px; background: #f0f0f0; margin: 6px 8px; }
+    .profil-menu-item.kirmizi { color: #e17055; }
+    .profil-menu-item.kirmizi:hover { background: #fff0f0; }
+
+    /* BİO DÜZENLEME */
+    .bio-modal { background: rgba(0,0,0,0.5); position: fixed; inset: 0; z-index: 400; display: flex; align-items: center; justify-content: center; padding: 20px; }
+    .bio-panel { background: white; border-radius: 20px; padding: 24px; max-width: 380px; width: 100%; box-shadow: 0 16px 48px rgba(0,0,0,0.18); }
+    .bio-panel h3 { font-family: 'Baloo 2', cursive; font-size: 17px; font-weight: 800; color: var(--koyu); margin-bottom: 14px; }
+
+    /* TAKİP */
+    .takip-btn { border: none; border-radius: 12px; padding: 8px 16px; font-family: 'Baloo 2', cursive; font-weight: 700; font-size: 12px; cursor: pointer; transition: all 0.15s; }
+    .takip-et { background: var(--mavi); color: white; }
+    .takip-et:hover { background: #5faae8; }
+    .takip-birak { background: #f0f0f0; color: var(--gri); }
+    .takip-birak:hover { background: #ffe0e0; color: #e17055; }
+    .takip-stats { display: flex; gap: 14px; margin-top: 8px; }
+    .takip-stat { font-size: 12px; color: var(--gri); }
+    .takip-stat strong { color: var(--koyu); font-weight: 800; }
+
     @media (max-width: 600px) {
       .iki-kolon { grid-template-columns: 1fr; }
       .etkinlik-grid { grid-template-columns: 1fr; }
+      .profil-panel { width: calc(100vw - 32px); }
     }
 
     /* FOOTER */
@@ -239,6 +322,14 @@ var state = {
   etkinlikler: [], kayitliEtkinlikler: [], galeri: [], galeriKategori: "",
   yukleniyor: false, listelYukleniyor: false, galeriYukleniyor: false,
   hata: "", toast: null, acikKartlar: {}, kaydediliyor: {}, paylasimModal: null,
+  aramaMetni: "", aramaSonuclari: null, aramaYukleniyor: false,
+  filtrePanelAcik: false, siralamaPanelAcik: false,
+  siralamaTipi: "tarih", siralamaYon: "azalan",
+  profilPanelAcik: false, biyografiPanelAcik: false, rozetPanelAcik: false,
+  rozetler: [], takipEdilenler: [], takipciler: [],
+  bioTaslak: "",
+  yeniRozet: { isim: "", emoji: "🏅", renk: "#74b9ff", aciklama: "", ozelSahip: "" },
+  ADMIN_EMAIL: "enesseker2113@gmail.com",
 };
 
 // ---- API ----
@@ -256,7 +347,7 @@ async function kullaniciyiYukle() {
     var data = await apiFetch("/auth/me");
     if (data.kullanici) {
       state.kullanici = data.kullanici;
-      await Promise.all([etkinlikleriYukle(), galeriYukle()]);
+      await Promise.all([etkinlikleriYukle(), galeriYukle(), rozettleriYukle(), takipYukle()]);
     } else { cikisYap(); }
   } catch(e) { cikisYap(); }
 }
@@ -331,6 +422,122 @@ async function etkinlikOlustur() {
   state.yukleniyor = false; render();
 }
 
+async function rozettleriYukle() {
+  try {
+    var d = await apiFetch("/rozetler");
+    state.rozetler = d.rozetler || [];
+  } catch(e) { state.rozetler = []; }
+}
+
+async function takipYukle() {
+  if (!state.kullanici) return;
+  try {
+    var d = await apiFetch("/takip");
+    state.takipEdilenler = d.takipEdilenler || [];
+    state.takipciler = d.takipciler || [];
+  } catch(e) {}
+}
+
+async function takipEt(email) {
+  if (!state.kullanici) { toast("⚠️ Önce giriş yapmalısın!"); return; }
+  try {
+    var d = await apiFetch("/takip", { method: "POST", body: JSON.stringify({ email: email }) });
+    if (d.basarili) {
+      if (state.takipEdilenler.indexOf(email) === -1) state.takipEdilenler.push(email);
+      toast("✅ Takip edildi!");
+    }
+  } catch(e) { toast("⚠️ Hata."); }
+  render();
+}
+
+async function takipBirak(email) {
+  try {
+    var d = await apiFetch("/takip", { method: "DELETE", body: JSON.stringify({ email: email }) });
+    if (d.basarili) {
+      state.takipEdilenler = state.takipEdilenler.filter(function(e) { return e !== email; });
+      toast("👋 Takip bırakıldı.");
+    }
+  } catch(e) { toast("⚠️ Hata."); }
+  render();
+}
+
+async function biyografiKaydet() {
+  try {
+    var d = await apiFetch("/profil", { method: "PUT", body: JSON.stringify({ bio: state.bioTaslak }) });
+    if (d.basarili) {
+      state.kullanici.bio = state.bioTaslak;
+      state.biyografiPanelAcik = false;
+      toast("✅ Bio güncellendi!");
+    }
+  } catch(e) { toast("⚠️ Hata."); }
+  render();
+}
+
+async function rozetEkle() {
+  var r = state.yeniRozet;
+  if (!r.isim) { toast("⚠️ Rozet ismi gerekli!"); return; }
+  try {
+    var d = await apiFetch("/rozetler", { method: "POST", body: JSON.stringify(r) });
+    if (d.basarili) {
+      state.rozetler.push(d.rozet);
+      state.yeniRozet = { isim: "", emoji: "🏅", renk: "#74b9ff", aciklama: "", ozelSahip: "" };
+      toast("🏅 Rozet oluşturuldu!");
+      if (r.ozelSahip && r.ozelSahip === state.kullanici.email) {
+        state.kullanici.rozetler = state.kullanici.rozetler || [];
+        state.kullanici.rozetler.push(d.rozet.id);
+      }
+    }
+  } catch(e) { toast("⚠️ Hata."); }
+  render();
+}
+
+var aramaTimeout = null;
+async function aramaYap(q) {
+  state.aramaMetni = q;
+  if (!q.trim()) { state.aramaSonuclari = null; render(); return; }
+  clearTimeout(aramaTimeout);
+  aramaTimeout = setTimeout(async function() {
+    state.aramaYukleniyor = true; render();
+    try {
+      var d = await apiFetch("/ara?q=" + encodeURIComponent(q));
+      state.aramaSonuclari = d;
+    } catch(e) { state.aramaSonuclari = null; }
+    state.aramaYukleniyor = false; render();
+  }, 350);
+  render();
+}
+
+function aramaKapat() {
+  state.aramaMetni = "";
+  state.aramaSonuclari = null;
+  render();
+}
+
+function galieriSirala(liste) {
+  var kopyala = liste.slice();
+  kopyala.sort(function(a, b) {
+    var fark = 0;
+    if (state.siralamaTipi === "tarih") {
+      fark = (new Date(b.kaydedilmeTarihi || 0)) - (new Date(a.kaydedilmeTarihi || 0));
+    } else if (state.siralamaTipi === "populerlik") {
+      fark = (b.kaydeden ? b.kaydeden.length : 0) - (a.kaydeden ? a.kaydeden.length : 0);
+    }
+    return state.siralamaYon === "artan" ? -fark : fark;
+  });
+  return kopyala;
+}
+
+function profilPanelAc() { state.profilPanelAcik = true; render(); }
+function profilPanelKapat() { state.profilPanelAcik = false; render(); }
+function biyografiPanelAc() { state.bioTaslak = state.kullanici.bio || ""; state.biyografiPanelAcik = true; state.profilPanelAcik = false; render(); }
+function biyografiPanelKapat() { state.biyografiPanelAcik = false; render(); }
+function rozetPanelAc() { state.rozetPanelAcik = true; state.profilPanelAcik = false; render(); }
+function rozetPanelKapat() { state.rozetPanelAcik = false; render(); }
+function filtrePanelToggle() { state.filtrePanelAcik = !state.filtrePanelAcik; state.siralamaPanelAcik = false; render(); }
+function siralamaPanelToggle() { state.siralamaPanelAcik = !state.siralamaPanelAcik; state.filtrePanelAcik = false; render(); }
+function siralamaSecici(tip) { state.siralamaTipi = tip; state.siralamaPanelAcik = false; render(); }
+function siralamaYonToggle() { state.siralamaYon = state.siralamaYon === "azalan" ? "artan" : "azalan"; render(); }
+
 function cikisYap() {
   state.token = null; state.kullanici = null; state.kayitliEtkinlikler = [];
   localStorage.removeItem("ea_token"); render();
@@ -385,8 +592,54 @@ function render() {
   else if (state.sekme === "galeri") app.innerHTML = renderGaleri();
   else if (state.sekme === "profil") app.innerHTML = renderProfil();
   baglantilariKur();
+
+  // Paylaşım modalı
   if (state.paylasimModal) renderModal();
   else { var m = document.getElementById("modal"); if (m) m.remove(); }
+
+  // Profil dropdown paneli
+  var pp = document.getElementById("profilPanel");
+  if (pp) pp.remove();
+  if (state.profilPanelAcik) {
+    var pd = document.createElement("div");
+    pd.id = "profilPanel";
+    pd.innerHTML = renderProfilPanel();
+    document.body.appendChild(pd);
+    pd.querySelector(".profil-panel-bg").addEventListener("click", function(ev) {
+      if (ev.target.classList.contains("profil-panel-bg")) profilPanelKapat();
+    });
+  }
+
+  // Bio paneli
+  var bp = document.getElementById("bioPanel");
+  if (bp) bp.remove();
+  if (state.biyografiPanelAcik) {
+    var bd = document.createElement("div");
+    bd.id = "bioPanel";
+    bd.innerHTML = renderBioPanel();
+    document.body.appendChild(bd);
+    document.getElementById("bioTextarea").addEventListener("input", function(e) { state.bioTaslak = e.target.value; });
+  }
+
+  // Rozet paneli
+  var rp = document.getElementById("rozetPanel");
+  if (rp) rp.remove();
+  if (state.rozetPanelAcik) {
+    var rd = document.createElement("div");
+    rd.id = "rozetPanel";
+    rd.innerHTML = renderRozetPanel();
+    document.body.appendChild(rd);
+    var ri = document.getElementById("rozetIsim");
+    if (ri) ri.addEventListener("input", function(e) { state.yeniRozet.isim = e.target.value; renderRozetOnizleme(); });
+    var re = document.getElementById("rozetEmoji");
+    if (re) re.addEventListener("input", function(e) { state.yeniRozet.emoji = e.target.value; renderRozetOnizleme(); });
+    var ra = document.getElementById("rozetAciklama");
+    if (ra) ra.addEventListener("input", function(e) { state.yeniRozet.aciklama = e.target.value; });
+    var rs = document.getElementById("rozetSahip");
+    if (rs) rs.addEventListener("input", function(e) { state.yeniRozet.ozelSahip = e.target.value; });
+  }
+
+  // Toast
   var t = document.querySelector(".toast");
   if (t) t.remove();
   if (state.toast) { var td = document.createElement("div"); td.className = "toast"; td.textContent = state.toast; document.body.appendChild(td); }
@@ -399,9 +652,16 @@ function renderHeader() {
     : [ {id:"galeri",label:"🌍 Keşfet"}, {id:"olustur",label:"✨ Oluştur"}, {id:"liste",label:"📝 ("+state.etkinlikler.length+")"} ];
   var btns = sekmeler.map(function(s){ return '<button class="sekme-btn '+(state.sekme===s.id?"aktif":"")+'" onclick="sekmeDegistir(\''+s.id+'\')">'+s.label+'</button>'; }).join("");
   var sag = state.kullanici
-    ? '<div class="kullanici-bilgi" onclick="sekmeDegistir(\'profil\')">'+(state.kullanici.resim?'<img src="'+state.kullanici.resim+'" alt="profil"/>':"")+'<span>'+state.kullanici.ad.split(" ")[0]+'</span></div><button class="cikis-btn" onclick="cikisYap()">Çıkış</button>'
+    ? '<div class="kullanici-bilgi" onclick="profilPanelAc()">'+(state.kullanici.resim?'<img src="'+state.kullanici.resim+'" alt="profil"/>':"")+'<span>'+state.kullanici.ad.split(" ")[0]+'</span></div><button class="cikis-btn" onclick="cikisYap()">Çıkış</button>'
     : '<a href="'+WORKER_URL+'/auth/google" class="google-btn" style="padding:7px 14px;font-size:12px;gap:6px;border-radius:10px;white-space:nowrap;border-width:1.5px;">Google ile Giriş</a>';
-  header.innerHTML = '<div class="header-ust"><div class="header-logo"><h1>🌟 Etkinlik Atölyesi</h1></div><div class="header-sag">'+sag+'</div></div><div class="header-sekmeler">'+btns+'</div>';
+  var aramaHtml = '<div class="arama-wrap"><div class="arama-kap" id="aramaKap">'
+    + '<input class="arama-input" type="text" placeholder="🔍  Etkinlik veya profil ara..." value="'+esc(state.aramaMetni)+'" oninput="aramaYap(this.value)" onblur="setTimeout(function(){var s=document.getElementById(\'aramaSonuc\');if(s)s.style.opacity=0;},180)" onfocus="this.oninput({target:this})">'
+    + (state.aramaMetni ? '<button onclick="aramaKapat()" style="position:absolute;right:14px;top:50%;transform:translateY(-50%);background:none;border:none;font-size:16px;cursor:pointer;color:#b2bec3;">✕</button>' : '<span class="arama-ikon">🔍</span>')
+    + (state.aramaSonuclari !== null ? renderAramaSonuclari() : '')
+    + '</div></div>';
+  header.innerHTML = '<div class="header-ust"><div class="header-logo"><h1>🌟 Etkinlik Atölyesi</h1></div><div class="header-sag">'+sag+'</div></div>'
+    + aramaHtml
+    + '<div class="header-sekmeler">'+btns+'</div>';
 }
 
 function renderOlustur() {
@@ -429,32 +689,252 @@ function renderListe(liste, kayitlidan) {
   return h;
 }
 
-function renderGaleri() {
-  var h = '<main>';
-  h += '<div class="galeri-filtre"><button class="secim-btn '+(state.galeriKategori===""?"aktif":"")+'" onclick="galeriFiltre(\'\')">Tümü</button>';
-  KATEGORILER.forEach(function(k){ h += '<button class="sekme-btn '+(state.galeriKategori===k.id?"aktif":"")+'" onclick="galeriFiltre(\''+k.id+'\')">'+k.label+'</button>'; });
+function renderAramaSonuclari() {
+  var s = state.aramaSonuclari;
+  var q = state.aramaMetni;
+  var h = '<div class="arama-sonuc" id="aramaSonuc">';
+  var bos = true;
+
+  if (state.aramaYukleniyor) {
+    h += '<div style="padding:16px;text-align:center;color:var(--gri);font-size:13px;">🔍 Aranıyor...</div>';
+  } else {
+    if (s && s.etkinlikler && s.etkinlikler.length) {
+      bos = false;
+      h += '<div class="arama-bolum-baslik">📚 Etkinlikler</div>';
+      s.etkinlikler.forEach(function(e) {
+        var kat = KATEGORILER.find(function(k){ return k.id===e.kategori; }) || KATEGORILER[0];
+        h += '<div class="arama-item" onclick="aramaEtkinlikAc('+JSON.stringify(e).replace(/"/g,"&quot;")+')">'
+          + '<div class="arama-item-ikon" style="background:'+kat.renk+'20">'+kat.label.split(" ")[0]+'</div>'
+          + '<div class="arama-item-bilgi"><div class="arama-item-ad">'+esc(e.baslik)+'</div><div class="arama-item-alt">'+esc(e.yas)+' · '+esc(e.sure)+'</div></div>'
+          + '</div>';
+      });
+    }
+    if (s && s.profiller && s.profiller.length) {
+      bos = false;
+      h += '<div class="arama-bolum-baslik">👤 Profiller</div>';
+      s.profiller.forEach(function(p) {
+        h += '<div class="arama-item" onclick="aramaProfilAc(\''+p.email+'\')">>'
+          + (p.resim ? '<img src="'+p.resim+'" style="width:36px;height:36px;border-radius:50%;object-fit:cover;">' : '<div class="arama-item-ikon" style="background:#e9ecef">👤</div>')
+          + '<div class="arama-item-bilgi"><div class="arama-item-ad">'+esc(p.ad)+'</div><div class="arama-item-alt">'+esc(p.email)+'</div></div>'
+          + '</div>';
+      });
+    }
+    if (bos && s) {
+      h += '<div style="padding:16px;text-align:center;color:var(--gri);font-size:13px;">Sonuç bulunamadı</div>';
+    }
+  }
+  // Google linki
+  h += '<a class="arama-google-link" href="https://www.google.com/search?q='+encodeURIComponent(q+' okul öncesi etkinlik')+'" target="_blank">🔗 Google\'da da ara: <strong>'+esc(q)+'</strong></a>';
   h += '</div>';
+  return h;
+}
+
+function aramaEtkinlikAc(e) {
+  state.aramaSonuclari = null; state.aramaMetni = "";
+  state.acikKartlar[e.id] = true;
+  // Galeri'ye geç
+  state.galeri.unshift(e);
+  state.sekme = "galeri";
+  render();
+  setTimeout(function(){ var el = document.getElementById("kart-"+e.id); if(el) el.scrollIntoView({behavior:"smooth"}); }, 200);
+}
+
+function aramaProfilAc(email) {
+  state.aramaSonuclari = null; state.aramaMetni = "";
+  toast("👤 Profil: " + email);
+  render();
+}
+
+function renderGaleri() {
+  var siralamaEtiket = { tarih:"📅 Tarih", populerlik:"⭐ Popüler", bakilan:"👁️ Bakılan" };
+  var h = '<main>';
+
+  // Kontrol satırı
+  h += '<div class="galeri-kontrol">';
+
+  // Filtre butonu
+  h += '<div class="filtre-kap">';
+  h += '<button class="filtre-btn '+(state.galeriKategori?"aktif":"")+'" onclick="filtrePanelToggle()">🎯 Filtrele'+(state.galeriKategori?" ✓":"")+'  ▾</button>';
+  if (state.filtrePanelAcik) {
+    h += '<div class="filtre-dropdown">';
+    h += '<div class="filtre-chip '+(state.galeriKategori===""?"secili":"")+'" onclick="galeriFiltre(\'\')"><span class="filtre-chip-renk" style="background:#b2bec3"></span>Tümü</div>';
+    KATEGORILER.forEach(function(k) {
+      h += '<div class="filtre-chip '+(state.galeriKategori===k.id?"secili":"")+'" onclick="galeriFiltre(\''+k.id+'\')">'
+        + '<span class="filtre-chip-renk" style="background:'+k.renk+'"></span>'+k.label+'</div>';
+    });
+    h += '</div>';
+  }
+  h += '</div>';
+
+  // Sıralama butonu
+  h += '<div class="filtre-kap">';
+  h += '<button class="filtre-btn" onclick="siralamaPanelToggle()">'+siralamaEtiket[state.siralamaTipi]+'  ▾</button>';
+  if (state.siralamaPanelAcik) {
+    h += '<div class="filtre-dropdown siralama-dropdown">';
+    Object.keys(siralamaEtiket).forEach(function(tip) {
+      h += '<div class="siralama-item '+(state.siralamaTipi===tip?"secili":"")+'" onclick="siralamaSecici(\''+tip+'\')">'+siralamaEtiket[tip]+(state.siralamaTipi===tip?"  ✓":"")+'</div>';
+    });
+    h += '</div>';
+  }
+  h += '</div>';
+
+  // Yön butonu
+  h += '<button class="yon-btn" onclick="siralamaYonToggle()" title="Sıralama yönü">'+(state.siralamaYon==="azalan"?"↓ Azalan":"↑ Artan")+'</button>';
+
+  h += '</div>'; // galeri-kontrol bitti
+
   if (state.galeriYukleniyor) return h + '<div class="bos"><span class="emoji">⏳</span><h2>Yükleniyor...</h2></div></main>';
   if (!state.galeri.length) return h + '<div class="bos"><span class="emoji">🌍</span><h2>Henüz paylaşılan etkinlik yok!</h2><p>İlk etkinliği sen oluştur ve paylaş.</p></div></main>';
+
+  var sirali = galieriSirala(state.galeri);
   h += '<div class="etkinlik-grid">';
-  state.galeri.forEach(function(e){ h += renderEtkinlikKart(e, false, true); });
+  sirali.forEach(function(e){ h += renderEtkinlikKart(e, false, true); });
   h += '</div></main>';
   return h;
 }
 
 function galeriFiltre(kategori) { state.galeriKategori = kategori; galeriYukle(); }
 
+function renderProfilRozetleri(kullanici) {
+  if (!kullanici || !kullanici.rozetler || !kullanici.rozetler.length) return "";
+  var h = '<div class="rozet-satiri">';
+  kullanici.rozetler.forEach(function(rid) {
+    var r = state.rozetler.find(function(x){ return x.id === rid; });
+    if (r) {
+      h += '<span class="rozet" style="background:'+r.renk+'22;border-color:'+r.renk+';color:'+r.renk+';" title="'+esc(r.aciklama)+'">'+r.emoji+' '+esc(r.isim)+'</span>';
+    }
+  });
+  // Enes'e özel rozet
+  if (kullanici.email === "enesseker2113@gmail.com") {
+    h += '<span class="rozet rozet-ozel" title="Etkinlik Atölyesi kurucusuna özel rozet">⚡ SKYDIVEX Kurucu</span>';
+  }
+  h += '</div>';
+  return h;
+}
+
+function renderProfilPanel() {
+  var k = state.kullanici;
+  var isAdmin = k && k.email === state.ADMIN_EMAIL;
+  return '<div class="profil-panel-bg" id="profilPanelBg">'
+    + '<div class="profil-panel">'
+    + '<div class="profil-panel-ust">'
+    + (k.resim ? '<img src="'+k.resim+'" alt="profil"/>' : '<div style="width:48px;height:48px;border-radius:50%;background:rgba(255,255,255,0.3);display:flex;align-items:center;justify-content:center;font-size:22px;">👤</div>')
+    + '<div><h4>'+esc(k.ad)+'</h4><p>'+esc(k.email)+'</p></div>'
+    + '</div>'
+    + '<div class="profil-panel-menu">'
+    + '<div class="profil-menu-item" onclick="sekmeDegistir(\'profil\');profilPanelKapat()"><span class="icon">👤</span>Profilim</div>'
+    + '<div class="profil-menu-item" onclick="biyografiPanelAc()"><span class="icon">✏️</span>Bio Düzenle</div>'
+    + (isAdmin ? '<div class="profil-menu-item" onclick="rozetPanelAc()"><span class="icon">🏅</span>Rozet Yönetimi</div>' : '')
+    + '<div class="profil-menu-ayrac"></div>'
+    + '<div class="profil-menu-item kirmizi" onclick="cikisYap()"><span class="icon">🚪</span>Çıkış Yap</div>'
+    + '</div>'
+    + '</div>'
+    + '</div>';
+}
+
+function renderBioPanel() {
+  return '<div class="bio-modal">'
+    + '<div class="bio-panel">'
+    + '<h3>✏️ Bio Düzenle</h3>'
+    + '<label>Kendin hakkında bir şeyler yaz</label>'
+    + '<textarea id="bioTextarea" rows="4" style="width:100%;margin-top:8px;border:2px solid #e9ecef;border-radius:12px;padding:10px;font-family:Nunito,sans-serif;font-size:14px;outline:none;resize:none;">'+esc(state.bioTaslak)+'</textarea>'
+    + '<div style="display:flex;gap:8px;margin-top:14px;">'
+    + '<button class="btn-kucuk" style="flex:1" onclick="biyografiPanelKapat()">İptal</button>'
+    + '<button class="btn-ana" style="flex:2;padding:10px;font-size:14px;" onclick="biyografiKaydet()">💾 Kaydet</button>'
+    + '</div>'
+    + '</div>'
+    + '</div>';
+}
+
+var ROZET_RENKLERI = ["#74b9ff","#a29bfe","#fd79a8","#fdcb6e","#00b894","#e17055","#6c5ce7","#fab1a0","#55efc4","#2d3436"];
+var ROZET_EMOJILER = ["🏅","⭐","🏆","🎖️","💎","🔥","⚡","🌟","🎯","🦁","🚀","👑","🎨","🎵","🌈"];
+
+function renderRozetOnizleme() {
+  var el = document.getElementById("rozetOnizleme");
+  if (el) {
+    var r = state.yeniRozet;
+    el.innerHTML = '<span class="rozet" style="background:'+r.renk+'22;border-color:'+r.renk+';color:'+r.renk+';font-size:15px;padding:6px 16px;">'+esc(r.emoji||"🏅")+' '+(esc(r.isim)||"Rozet İsmi")+'</span>';
+  }
+}
+
+function rozetRenkSec(renk) {
+  state.yeniRozet.renk = renk;
+  var el = document.getElementById("rozetOnizleme");
+  if (el) renderRozetOnizleme();
+  document.querySelectorAll(".renk-top").forEach(function(b) {
+    b.classList.toggle("secili", b.dataset.renk === renk);
+  });
+}
+
+function rozetEmojiSec(emoji) {
+  state.yeniRozet.emoji = emoji;
+  var el = document.getElementById("rozetEmoji");
+  if (el) el.value = emoji;
+  renderRozetOnizleme();
+}
+
+function renderRozetPanel() {
+  var r = state.yeniRozet;
+  var tumRozetler = state.rozetler;
+  var renkler = ROZET_RENKLERI.map(function(c) {
+    return '<div class="renk-top'+(r.renk===c?" secili":"")+'" data-renk="'+c+'" style="background:'+c+'" onclick="rozetRenkSec(\''+c+'\')"></div>';
+  }).join("");
+  var emojiler = ROZET_EMOJILER.map(function(e) {
+    return '<span style="font-size:22px;cursor:pointer;padding:4px;" onclick="rozetEmojiSec(\''+e+'\')">'+e+'</span>';
+  }).join("");
+
+  var h = '<div class="rozet-modal" onclick="if(event.target===this)rozetPanelKapat()">'
+    + '<div class="rozet-panel" style="max-height:90vh;overflow-y:auto;">'
+    + '<h3>🏅 Rozet Yönetimi</h3>';
+
+  // Mevcut rozetler
+  if (tumRozetler.length) {
+    h += '<div style="margin-bottom:18px;"><div style="font-size:11px;font-weight:800;color:#b2bec3;text-transform:uppercase;letter-spacing:1.5px;margin-bottom:10px;">Mevcut Rozetler</div>';
+    h += '<div class="rozet-satiri">';
+    tumRozetler.forEach(function(rz) {
+      h += '<span class="rozet" style="background:'+rz.renk+'22;border-color:'+rz.renk+';color:'+rz.renk+';">'+rz.emoji+' '+esc(rz.isim)+'</span>';
+    });
+    h += '</div></div>';
+  }
+
+  // Yeni rozet formu
+  h += '<div style="font-size:11px;font-weight:800;color:#b2bec3;text-transform:uppercase;letter-spacing:1.5px;margin-bottom:12px;">Yeni Rozet Oluştur</div>';
+  h += '<div class="rozet-onizleme"><div id="rozetOnizleme"><span class="rozet" style="background:'+r.renk+'22;border-color:'+r.renk+';color:'+r.renk+';font-size:15px;padding:6px 16px;">'+esc(r.emoji||"🏅")+' '+(r.isim||"Rozet İsmi")+'</span></div></div>';
+  h += '<div style="display:flex;flex-direction:column;gap:12px;">';
+  h += '<div><label>Rozet İsmi</label><input id="rozetIsim" type="text" placeholder="örn: Süper Öğretmen" value="'+esc(r.isim)+'"/></div>';
+  h += '<div><label>Emoji</label><input id="rozetEmoji" type="text" placeholder="🏅" value="'+esc(r.emoji)+'" style="width:80px;text-align:center;font-size:20px;"/></div>';
+  h += '<div><label>Hızlı Emoji Seç</label><div style="display:flex;flex-wrap:wrap;gap:2px;margin-top:6px;">'+emojiler+'</div></div>';
+  h += '<div><label>Renk</label><div class="renk-secici">'+renkler+'</div></div>';
+  h += '<div><label>Açıklama</label><input id="rozetAciklama" type="text" placeholder="Bu rozeti kazanmak için..." value="'+esc(r.aciklama)+'"/></div>';
+  h += '<div><label>Özel Sahip (Email - boş bırakırsan herkese açık)</label><input id="rozetSahip" type="text" placeholder="ornek@gmail.com" value="'+esc(r.ozelSahip)+'"/></div>';
+  h += '</div>';
+  h += '<div style="display:flex;gap:8px;margin-top:18px;">';
+  h += '<button class="btn-kucuk" style="flex:1" onclick="rozetPanelKapat()">İptal</button>';
+  h += '<button class="btn-ana" style="flex:2;padding:10px;font-size:14px;" onclick="rozetEkle()">✨ Rozet Oluştur</button>';
+  h += '</div>';
+  h += '</div></div>';
+  return h;
+}
+
 function renderProfil() {
   if (!state.kullanici) return '<main><div class="bos"><span class="emoji">👤</span><h2>Giriş yapmalısın!</h2></div></main>';
   var k = state.kullanici;
   var gizliMi = k.gizlilik === "private";
   var h = '<main><div class="profil-kart">';
-  h += '<div class="profil-ust">'+(k.resim?'<img src="'+k.resim+'" alt="profil"/>':'')+'<div><h2>'+esc(k.ad)+'</h2><p>'+esc(k.email)+'</p></div></div>';
-  h += '<div class="profil-stats"><div class="profil-stat"><strong>'+state.kayitliEtkinlikler.length+'</strong><span>Etkinlik</span></div><div class="profil-stat"><strong>'+(gizliMi?"🔒":"🌍")+'</strong><span>'+(gizliMi?"Gizli":"Herkese Açık")+'</span></div></div>';
+  h += '<div class="profil-ust">'+(k.resim?'<img src="'+k.resim+'" alt="profil"/>':'')+'<div><h2>'+esc(k.ad)+'</h2><p>'+esc(k.email)+'</p>'
+    + renderProfilRozetleri(k)
+    + '</div></div>';
+  h += '<div class="profil-stats">'
+    + '<div class="profil-stat"><strong>'+state.kayitliEtkinlikler.length+'</strong><span>Etkinlik</span></div>'
+    + '<div class="profil-stat"><strong>'+(gizliMi?"🔒":"🌍")+'</strong><span>'+(gizliMi?"Gizli":"Açık")+'</span></div>'
+    + '<div class="profil-stat"><strong>'+state.takipEdilenler.length+'</strong><span>Takip</span></div>'
+    + '<div class="profil-stat"><strong>'+state.takipciler.length+'</strong><span>Takipçi</span></div>'
+    + '</div>';
   h += '<div class="gizlilik-toggle"><span>'+(gizliMi?"🔒 Hesabın gizli":"🌍 Hesabın herkese açık")+'</span>';
   h += '<label class="toggle"><input type="checkbox" '+(gizliMi?"":"checked")+' onchange="gizlilikGuncelle(this.checked?\'public\':\'private\')"><span class="toggle-slider"></span></label>';
-  h += '<span style="font-size:12px;color:var(--gri);">'+(gizliMi?"Etkinliklerin galeride görünmüyor":"Etkinliklerin galeride görünüyor")+'</span></div>';
-  if (k.bio !== undefined) h += '<p style="font-size:13px;color:var(--gri);margin-top:8px;">'+esc(k.bio||"Bio henüz eklenmedi.")+'</p>';
+  h += '<span style="font-size:12px;color:var(--gri);">'+(gizliMi?"Galeride görünmüyor":"Galeride görünüyor")+'</span></div>';
+  h += '<p style="font-size:13px;color:var(--gri);margin-top:8px;">'+esc(k.bio||"Bio henüz eklenmedi.")+'</p>';
+  h += '<button class="btn-kucuk" style="margin-top:10px;" onclick="biyografiPanelAc()">✏️ Bio Düzenle</button>';
   h += '</div>';
   if (state.kayitliEtkinlikler.length) {
     h += '<div class="etkinlik-grid">';
@@ -472,7 +952,18 @@ function renderEtkinlikKart(e, kayitlidan, galeriden) {
   var zatenKayitli = state.kayitliEtkinlikler.some(function(k){ return k.id===e.id || k.orijinalId===e.id; });
   var h = '<div class="etkinlik-kart"><div class="etkinlik-kart-ust" style="background:'+kat.renk+'"><span class="kat-label">'+kat.label+'</span><div class="badges"><span class="badge">'+esc(e.yas)+'</span><span class="badge">⏱ '+esc(e.sure)+'</span></div></div>';
   h += '<div class="etkinlik-kart-icerik"><h3>'+esc(e.baslik)+'</h3>';
-  if (galeriden && e.sahipAd) h += '<div class="sahip-bilgi">'+(e.sahipResim?'<img src="'+e.sahipResim+'" alt=""/>':'')+'<span>'+esc(e.sahipAd)+'</span></div>';
+  if (galeriden && e.sahipAd) {
+    var takipEdiliyor = state.takipEdilenler.indexOf(e.sahipEmail) !== -1;
+    var kendisin = state.kullanici && e.sahipEmail === state.kullanici.email;
+    h += '<div style="display:flex;align-items:center;gap:6px;margin-bottom:6px;">'
+      + '<div class="sahip-bilgi" style="margin:0;">'
+      + (e.sahipResim?'<img src="'+e.sahipResim+'" alt=""/>':'')
+      + '<span>'+esc(e.sahipAd)+'</span></div>';
+    if (!kendisin) {
+      h += '<button class="takip-btn '+(takipEdiliyor?"takip-birak":"takip-et")+'" onclick="'+( takipEdiliyor ? "takipBirak('"+e.sahipEmail+"')" : "takipEt('"+e.sahipEmail+"')")+'">'+(takipEdiliyor?"✓ Takip Ediliyor":"+ Takip")+'</button>';
+    }
+    h += '</div>';
+  }
   if (e.orijinalSahip) h += '<div class="orijinal-badge">📌 '+esc(e.orijinalSahip)+' tarafından oluşturuldu</div>';
   h += '<p class="hedef">'+esc(e.hedef)+'</p>';
   h += '<button class="detay-toggle" onclick="kartToggle(\''+e.id+'\')">'+( acik?"▲ Gizle":"▼ Detaylar")+'</button>';
