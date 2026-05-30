@@ -230,10 +230,66 @@
     .takip-stat { font-size: 12px; color: var(--gri); }
     .takip-stat strong { color: var(--koyu); font-weight: 800; }
 
+    /* ---- ADMIN PANELİ ---- */
+    .admin-wrap { padding: 0 0 40px; }
+    .admin-banner { background: linear-gradient(135deg, #2d3436, #636e72); color: white; border-radius: 20px; padding: 24px 28px; margin-bottom: 20px; display: flex; align-items: center; gap: 16px; }
+    .admin-banner-ikon { font-size: 40px; }
+    .admin-banner h2 { font-family: 'Baloo 2', cursive; font-size: 22px; font-weight: 800; margin: 0; }
+    .admin-banner p { font-size: 12px; opacity: 0.75; margin: 2px 0 0; }
+    .admin-sekmeler { display: flex; gap: 6px; margin-bottom: 20px; overflow-x: auto; padding-bottom: 4px; }
+    .admin-sekme-btn { display: flex; align-items: center; gap: 6px; border: 2px solid #e9ecef; border-radius: 12px; padding: 8px 14px; font-family: 'Baloo 2', cursive; font-weight: 700; font-size: 13px; cursor: pointer; background: white; color: var(--koyu); transition: all 0.15s; white-space: nowrap; }
+    .admin-sekme-btn.aktif { border-color: #2d3436; background: #2d3436; color: white; }
+    .admin-sekme-btn:hover:not(.aktif) { border-color: #636e72; background: #f5f5f5; }
+    .admin-stat-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 12px; margin-bottom: 20px; }
+    .admin-stat-kart { background: white; border-radius: 16px; padding: 18px; box-shadow: 0 2px 12px rgba(0,0,0,0.06); border: 1.5px solid #f0f0f0; }
+    .admin-stat-kart .sayi { font-family: 'Baloo 2', cursive; font-size: 32px; font-weight: 800; line-height: 1; }
+    .admin-stat-kart .etiket { font-size: 12px; color: var(--gri); margin-top: 4px; font-weight: 600; }
+    .admin-bolum { background: white; border-radius: 18px; padding: 20px; margin-bottom: 16px; box-shadow: 0 2px 12px rgba(0,0,0,0.06); border: 1.5px solid #f0f0f0; }
+    .admin-bolum-baslik { font-family: 'Baloo 2', cursive; font-size: 15px; font-weight: 800; color: var(--koyu); margin-bottom: 14px; display: flex; align-items: center; gap: 8px; }
+    .admin-tablo { width: 100%; border-collapse: collapse; font-size: 13px; }
+    .admin-tablo th { text-align: left; padding: 8px 10px; background: #f8f9fa; color: #636e72; font-weight: 700; font-size: 11px; text-transform: uppercase; letter-spacing: 0.5px; }
+    .admin-tablo td { padding: 10px; border-bottom: 1px solid #f5f5f5; vertical-align: middle; }
+    .admin-tablo tr:last-child td { border-bottom: none; }
+    .admin-tablo tr:hover td { background: #fafafa; }
+    .admin-badge { display: inline-flex; align-items: center; padding: 2px 8px; border-radius: 20px; font-size: 11px; font-weight: 700; }
+    .badge-yesil { background: #e8fdf0; color: #00b894; }
+    .badge-kirmizi { background: #ffeaea; color: #e17055; }
+    .badge-mavi { background: #e8f4ff; color: #0984e3; }
+    .admin-eylem-btn { border: none; border-radius: 8px; padding: 5px 10px; font-size: 11px; font-weight: 700; cursor: pointer; transition: all 0.12s; font-family: 'Nunito', sans-serif; }
+    .admin-eylem-btn.tehlike { background: #ffeaea; color: #e17055; }
+    .admin-eylem-btn.tehlike:hover { background: #e17055; color: white; }
+    .admin-eylem-btn.normal { background: #f0f0f0; color: #636e72; }
+    .admin-eylem-btn.normal:hover { background: #636e72; color: white; }
+    .admin-eylem-btn.basari { background: #e8fdf0; color: #00b894; }
+    .admin-eylem-btn.basari:hover { background: #00b894; color: white; }
+    .admin-eylem-btn.uyari { background: #fff3e0; color: #e67e22; }
+    .admin-eylem-btn.uyari:hover { background: #e67e22; color: white; }
+    .trend-bar-wrap { display: flex; align-items: flex-end; gap: 4px; height: 60px; margin-top: 8px; }
+    .trend-bar { flex: 1; background: linear-gradient(to top, #74b9ff, #a29bfe); border-radius: 4px 4px 0 0; min-height: 4px; transition: height 0.3s; position: relative; }
+    .trend-bar:hover::after { content: attr(data-sayi); position: absolute; top: -22px; left: 50%; transform: translateX(-50%); background: #2d3436; color: white; padding: 2px 6px; border-radius: 6px; font-size: 10px; font-weight: 700; white-space: nowrap; }
+    .trend-tarih { font-size: 9px; color: #b2bec3; text-align: center; margin-top: 4px; }
+    .duyuru-form input, .duyuru-form textarea, .duyuru-form select { width: 100%; border: 2px solid #e9ecef; border-radius: 10px; padding: 10px 12px; font-family: 'Nunito', sans-serif; font-size: 13px; outline: none; transition: border-color 0.15s; box-sizing: border-box; }
+    .duyuru-form input:focus, .duyuru-form textarea:focus, .duyuru-form select:focus { border-color: var(--mavi); }
+    .duyuru-form label { font-size: 12px; font-weight: 700; color: var(--gri); display: block; margin-bottom: 4px; margin-top: 10px; }
+    .duyuru-kart { border-radius: 12px; padding: 14px; margin-bottom: 8px; border-left: 4px solid; }
+    .duyuru-bilgi { border-color: #74b9ff; background: #f0f8ff; }
+    .duyuru-uyari { border-color: #fdcb6e; background: #fffbf0; }
+    .duyuru-basari { border-color: #00b894; background: #f0fdf8; }
+    .kv-sonuc { background: #2d3436; color: #00cec9; border-radius: 10px; padding: 12px; font-family: monospace; font-size: 12px; overflow-x: auto; white-space: pre-wrap; word-break: break-all; max-height: 200px; overflow-y: auto; margin-top: 10px; }
+    .admin-arama { border: 2px solid #e9ecef; border-radius: 10px; padding: 8px 12px; font-family: 'Nunito', sans-serif; font-size: 13px; outline: none; width: 100%; margin-bottom: 12px; transition: border-color 0.15s; }
+    .admin-arama:focus { border-color: #636e72; }
+    .kullanici-avatar { width: 32px; height: 32px; border-radius: 50%; object-fit: cover; }
+    .popüler-etkinlik { display: flex; align-items: center; gap: 10px; padding: 8px 0; border-bottom: 1px solid #f0f0f0; }
+    .popüler-etkinlik:last-child { border-bottom: none; }
+    .popüler-sira { font-family: 'Baloo 2', cursive; font-size: 18px; font-weight: 800; color: #b2bec3; width: 24px; text-align: center; flex-shrink: 0; }
+    .popüler-sira.bir { color: #fdcb6e; }
+    .popüler-sira.iki { color: #b2bec3; }
+    .popüler-sira.uc { color: #e17055; }
     @media (max-width: 600px) {
       .iki-kolon { grid-template-columns: 1fr; }
       .etkinlik-grid { grid-template-columns: 1fr; }
       .profil-panel { width: calc(100vw - 32px); }
+      .admin-stat-grid { grid-template-columns: 1fr 1fr; }
     }
 
     /* FOOTER */
@@ -330,6 +386,13 @@ var state = {
   bioTaslak: "",
   yeniRozet: { isim: "", emoji: "🏅", renk: "#74b9ff", aciklama: "", ozelSahip: "" },
   ADMIN_EMAIL: "enesseker2113@gmail.com",
+  // Admin
+  adminSekme: "istatistik", // istatistik | kullanicilar | etkinlikler | duyurular | kv
+  adminIstatistik: null, adminKullanicilar: null, adminEtkinlikler: null,
+  adminYukleniyor: false,
+  adminDuyuruForm: { baslik: "", mesaj: "", tip: "bilgi" },
+  adminKvAnahtar: "", adminKvSonuc: null,
+  adminArama: "",
 };
 
 // ---- API ----
@@ -578,7 +641,13 @@ function paylasimMetni(e) {
 
 function toast(msg) { state.toast = msg; render(); setTimeout(function(){ state.toast = null; render(); }, 2500); }
 function esc(s) { return String(s||"").replace(/&/g,"&amp;").replace(/</g,"&lt;").replace(/>/g,"&gt;").replace(/"/g,"&quot;"); }
-function sekmeDegistir(s) { state.sekme = s; if (s === "galeri") galeriYukle(); render(); }
+function sekmeDegistir(s) {
+  state.sekme = s;
+  state.adminArama = "";
+  if (s === "galeri") galeriYukle();
+  if (s === "admin") { state.adminIstatistik = null; adminYukle("istatistik"); return; }
+  render();
+}
 function kartToggle(id) { state.acikKartlar[id] = !state.acikKartlar[id]; render(); }
 function formDegistir(alan, deger) { state.form[alan] = deger; render(); }
 
@@ -591,6 +660,7 @@ function render() {
   else if (state.sekme === "kayitli") app.innerHTML = renderListe(state.kayitliEtkinlikler, true);
   else if (state.sekme === "galeri") app.innerHTML = renderGaleri();
   else if (state.sekme === "profil") app.innerHTML = renderProfil();
+  else if (state.sekme === "admin") app.innerHTML = renderAdmin();
   baglantilariKur();
 
   // Paylaşım modalı
@@ -647,21 +717,56 @@ function render() {
 
 function renderHeader() {
   var header = document.getElementById("mainHeader");
-  var sekmeler = state.kullanici
-    ? [ {id:"galeri",label:"🌍 Keşfet"}, {id:"olustur",label:"✨ Oluştur"}, {id:"liste",label:"📝 ("+state.etkinlikler.length+")"}, {id:"kayitli",label:"⭐ ("+state.kayitliEtkinlikler.length+")"}, {id:"profil",label:"👤 Profil"} ]
-    : [ {id:"galeri",label:"🌍 Keşfet"}, {id:"olustur",label:"✨ Oluştur"}, {id:"liste",label:"📝 ("+state.etkinlikler.length+")"} ];
-  var btns = sekmeler.map(function(s){ return '<button class="sekme-btn '+(state.sekme===s.id?"aktif":"")+'" onclick="sekmeDegistir(\''+s.id+'\')">'+s.label+'</button>'; }).join("");
+
+  // Header'ı ilk kez oluştur
+  if (!header.dataset.init) {
+    header.dataset.init = "1";
+    header.innerHTML =
+      '<div class="header-ust"><div class="header-logo"><h1>🌟 Etkinlik Atölyesi</h1></div><div class="header-sag" id="headerSag"></div></div>'
+      + '<div class="arama-wrap"><div class="arama-kap" id="aramaKap">'
+      + '<input class="arama-input" id="aramaInput" type="text" placeholder="🔍  Etkinlik veya profil ara..." autocomplete="off">'
+      + '<span class="arama-ikon" id="aramaIkon">🔍</span>'
+      + '<div id="aramaSonucKap"></div>'
+      + '</div></div>'
+      + '<div class="header-sekmeler" id="headerSekmeler"></div>';
+
+    // Input event — sadece bir kez bağla
+    var inp = document.getElementById("aramaInput");
+    inp.addEventListener("input", function() { aramaYap(inp.value); });
+    inp.addEventListener("keydown", function(ev) { if (ev.key === "Escape") aramaKapat(); });
+    document.addEventListener("click", function(ev) {
+      var kap = document.getElementById("aramaKap");
+      if (kap && !kap.contains(ev.target)) {
+        state.aramaSonuclari = null;
+        document.getElementById("aramaSonucKap").innerHTML = "";
+      }
+    });
+  }
+
+  // Sağ kısım güncelle
   var sag = state.kullanici
     ? '<div class="kullanici-bilgi" onclick="profilPanelAc()">'+(state.kullanici.resim?'<img src="'+state.kullanici.resim+'" alt="profil"/>':"")+'<span>'+state.kullanici.ad.split(" ")[0]+'</span></div><button class="cikis-btn" onclick="cikisYap()">Çıkış</button>'
     : '<a href="'+WORKER_URL+'/auth/google" class="google-btn" style="padding:7px 14px;font-size:12px;gap:6px;border-radius:10px;white-space:nowrap;border-width:1.5px;">Google ile Giriş</a>';
-  var aramaHtml = '<div class="arama-wrap"><div class="arama-kap" id="aramaKap">'
-    + '<input class="arama-input" type="text" placeholder="🔍  Etkinlik veya profil ara..." value="'+esc(state.aramaMetni)+'" oninput="aramaYap(this.value)" onblur="setTimeout(function(){var s=document.getElementById(\'aramaSonuc\');if(s)s.style.opacity=0;},180)" onfocus="this.oninput({target:this})">'
-    + (state.aramaMetni ? '<button onclick="aramaKapat()" style="position:absolute;right:14px;top:50%;transform:translateY(-50%);background:none;border:none;font-size:16px;cursor:pointer;color:#b2bec3;">✕</button>' : '<span class="arama-ikon">🔍</span>')
-    + (state.aramaSonuclari !== null ? renderAramaSonuclari() : '')
-    + '</div></div>';
-  header.innerHTML = '<div class="header-ust"><div class="header-logo"><h1>🌟 Etkinlik Atölyesi</h1></div><div class="header-sag">'+sag+'</div></div>'
-    + aramaHtml
-    + '<div class="header-sekmeler">'+btns+'</div>';
+  document.getElementById("headerSag").innerHTML = sag;
+
+  // Sekmeler güncelle
+  var sekmeler = state.kullanici
+    ? [{id:"galeri",label:"🌍 Keşfet"},{id:"olustur",label:"✨ Oluştur"},{id:"liste",label:"📝 ("+state.etkinlikler.length+")"},{id:"kayitli",label:"⭐ ("+state.kayitliEtkinlikler.length+")"},{id:"profil",label:"👤 Profil"},{id:"admin",label:"⚙️ Admin"}]
+    : [{id:"galeri",label:"🌍 Keşfet"},{id:"olustur",label:"✨ Oluştur"},{id:"liste",label:"📝 ("+state.etkinlikler.length+")"}];
+  if (!state.kullanici || state.kullanici.email !== state.ADMIN_EMAIL) {
+    sekmeler = sekmeler.filter(function(s){ return s.id !== "admin"; });
+  }
+  document.getElementById("headerSekmeler").innerHTML = sekmeler.map(function(s){
+    return '<button class="sekme-btn '+(state.sekme===s.id?"aktif":"")+'" onclick="sekmeDegistir(\''+s.id+'\')">'+s.label+'</button>';
+  }).join("");
+
+  // Arama sonucu güncelle (input focus'a dokunma!)
+  var sonucKap = document.getElementById("aramaSonucKap");
+  if (sonucKap) {
+    sonucKap.innerHTML = state.aramaSonuclari !== null ? renderAramaSonuclari() : "";
+  }
+  var ikon = document.getElementById("aramaIkon");
+  if (ikon) ikon.textContent = state.aramaMetni ? "" : "🔍";
 }
 
 function renderOlustur() {
@@ -914,6 +1019,376 @@ function renderRozetPanel() {
   h += '</div>';
   h += '</div></div>';
   return h;
+}
+
+// ---- ADMIN FONKSİYONLARI ----
+async function adminYukle(sekme) {
+  state.adminSekme = sekme || state.adminSekme;
+  state.adminYukleniyor = true; render();
+  try {
+    if (state.adminSekme === "istatistik" && !state.adminIstatistik) {
+      state.adminIstatistik = await apiFetch("/admin/istatistik");
+    }
+    if (state.adminSekme === "kullanicilar" && !state.adminKullanicilar) {
+      state.adminKullanicilar = await apiFetch("/admin/kullanicilar");
+    }
+    if (state.adminSekme === "etkinlikler" && !state.adminEtkinlikler) {
+      state.adminEtkinlikler = await apiFetch("/admin/etkinlikler");
+    }
+  } catch(e) { toast("⚠️ Admin veri yüklenemedi."); }
+  state.adminYukleniyor = false; render();
+}
+
+function adminSekmeGec(s) {
+  state.adminSekme = s;
+  state.adminArama = "";
+  adminYukle(s);
+}
+
+async function adminEtkinlikSil(id, baslik) {
+  if (!confirm('"' + baslik + '" etkinliğini silmek istediğinden emin misin?')) return;
+  try {
+    await apiFetch("/admin/etkinlik/" + id, { method: "DELETE" });
+    state.adminEtkinlikler.etkinlikler = state.adminEtkinlikler.etkinlikler.filter(function(e){ return e.id !== id; });
+    if (state.adminIstatistik) state.adminIstatistik.toplamEtkinlik--;
+    toast("🗑️ Etkinlik silindi.");
+  } catch(e) { toast("⚠️ Hata."); }
+  render();
+}
+
+async function adminBanToggle(email, mevcutDurum) {
+  var isim = email.split("@")[0];
+  var eylem = mevcutDurum ? "banını kaldırmak" : "banlamak";
+  if (!confirm(isim + " kullanıcısını " + eylem + " istediğinden emin misin?")) return;
+  try {
+    await apiFetch("/admin/ban", { method: "POST", body: JSON.stringify({ email: email, banlandi: !mevcutDurum }) });
+    var k = state.adminKullanicilar.kullanicilar.find(function(u){ return u.email === email; });
+    if (k) k.banlandi = !mevcutDurum;
+    toast(mevcutDurum ? "✅ Ban kaldırıldı." : "🔨 Kullanıcı banlandı.");
+  } catch(e) { toast("⚠️ Hata."); }
+  render();
+}
+
+async function adminDuyuruGonder() {
+  var f = state.adminDuyuruForm;
+  if (!f.baslik || !f.mesaj) { toast("⚠️ Başlık ve mesaj gerekli!"); return; }
+  try {
+    var d = await apiFetch("/admin/duyuru", { method: "POST", body: JSON.stringify(f) });
+    toast("📢 Duyuru yayınlandı!");
+    state.adminDuyuruForm = { baslik: "", mesaj: "", tip: "bilgi" };
+    // duyurular sayfasını yenile
+    state.adminSekme = "duyurular";
+  } catch(e) { toast("⚠️ Hata."); }
+  render();
+}
+
+async function adminDuyuruSil(id) {
+  try {
+    await apiFetch("/admin/duyuru/" + id, { method: "DELETE" });
+    toast("🗑️ Duyuru silindi.");
+  } catch(e) { toast("⚠️ Hata."); }
+  render();
+}
+
+async function adminKvOku() {
+  if (!state.adminKvAnahtar) { toast("⚠️ Anahtar gir!"); return; }
+  try {
+    var d = await apiFetch("/admin/kv/oku", { method: "POST", body: JSON.stringify({ anahtar: state.adminKvAnahtar }) });
+    state.adminKvSonuc = d.deger;
+  } catch(e) { toast("⚠️ Hata."); state.adminKvSonuc = "HATA"; }
+  render();
+}
+
+async function adminKvSil() {
+  if (!state.adminKvAnahtar) { toast("⚠️ Anahtar gir!"); return; }
+  if (!confirm('"' + state.adminKvAnahtar + '" anahtarını silmek istediğinden emin misin?')) return;
+  try {
+    await apiFetch("/admin/kv/sil", { method: "POST", body: JSON.stringify({ anahtar: state.adminKvAnahtar }) });
+    toast("🗑️ KV anahtarı silindi."); state.adminKvSonuc = null; state.adminKvAnahtar = "";
+  } catch(e) { toast("⚠️ Hata."); }
+  render();
+}
+
+async function adminGaleriRebuild() {
+  if (!confirm("Galeriyi yeniden oluşturmak istediğinden emin misin? Bu işlem birkaç saniye sürebilir.")) return;
+  try {
+    var d = await apiFetch("/admin/galeri-rebuild", { method: "POST" });
+    toast("✅ Galeri rebuild edildi! " + d.toplamEtkinlik + " etkinlik.");
+    state.adminIstatistik = null; state.adminEtkinlikler = null;
+    await adminYukle("istatistik");
+  } catch(e) { toast("⚠️ Hata."); }
+  render();
+}
+
+function renderAdmin() {
+  if (!state.kullanici || state.kullanici.email !== state.ADMIN_EMAIL) {
+    return '<main><div class="bos"><span class="emoji">🚫</span><h2>Yetki Yok</h2><p>Bu sayfa sadece adminler içindir.</p></div></main>';
+  }
+
+  var h = '<main><div class="admin-wrap">';
+
+  // Banner
+  h += '<div class="admin-banner">'
+    + '<div class="admin-banner-ikon">⚙️</div>'
+    + '<div><h2>Admin Paneli</h2><p>Etkinlik Atölyesi · Hoş geldin, ' + esc(state.kullanici.ad.split(" ")[0]) + ' 👑</p></div>'
+    + '</div>';
+
+  // Sekmeler
+  var sekmeler = [
+    { id:"istatistik", label:"📊 İstatistik" },
+    { id:"kullanicilar", label:"👥 Kullanıcılar" },
+    { id:"etkinlikler", label:"📚 Etkinlikler" },
+    { id:"duyurular", label:"📢 Duyurular" },
+    { id:"rozetler", label:"🏅 Rozetler" },
+    { id:"kv", label:"🗄️ KV Veritabanı" },
+    { id:"araclar", label:"🔧 Araçlar" },
+  ];
+  h += '<div class="admin-sekmeler">';
+  sekmeler.forEach(function(s) {
+    h += '<button class="admin-sekme-btn ' + (state.adminSekme===s.id?"aktif":"") + '" onclick="adminSekmeGec(\'' + s.id + '\')">' + s.label + '</button>';
+  });
+  h += '</div>';
+
+  if (state.adminYukleniyor) {
+    h += '<div class="bos" style="padding:40px 0;"><span class="emoji" style="font-size:32px;">⏳</span><p>Yükleniyor...</p></div>';
+    return h + '</div></main>';
+  }
+
+  // ---- İSTATİSTİK ----
+  if (state.adminSekme === "istatistik") {
+    var ist = state.adminIstatistik;
+    if (!ist) { adminYukle("istatistik"); return h + '<div style="padding:20px;text-align:center;color:var(--gri);">Yükleniyor...</div></div></main>'; }
+
+    h += '<div class="admin-stat-grid">'
+      + '<div class="admin-stat-kart"><div class="sayi" style="color:#6c5ce7">'+ist.toplamEtkinlik+'</div><div class="etiket">📚 Toplam Etkinlik</div></div>'
+      + '<div class="admin-stat-kart"><div class="sayi" style="color:#00b894">'+ist.toplamKullanici+'</div><div class="etiket">👥 Toplam Kullanıcı</div></div>'
+      + '<div class="admin-stat-kart"><div class="sayi" style="color:#fdcb6e">'+ist.toplamRozet+'</div><div class="etiket">🏅 Toplam Rozet</div></div>'
+      + '<div class="admin-stat-kart"><div class="sayi" style="color:#e17055">'+(Object.keys(ist.kategoriDagilimi||{}).length)+'</div><div class="etiket">🎯 Aktif Kategori</div></div>'
+      + '</div>';
+
+    // 7 günlük trend
+    if (ist.sonYediGunTrend && ist.sonYediGunTrend.length) {
+      var maxSayi = Math.max.apply(null, ist.sonYediGunTrend.map(function(t){ return t.sayi; })) || 1;
+      h += '<div class="admin-bolum"><div class="admin-bolum-baslik">📈 Son 7 Gün Etkinlik Trendi</div>';
+      h += '<div style="display:flex;gap:6px;">';
+      ist.sonYediGunTrend.forEach(function(t) {
+        var pct = Math.max(8, Math.round((t.sayi / maxSayi) * 60));
+        var gun = t.tarih.split("-").slice(1).join("/");
+        h += '<div style="flex:1;display:flex;flex-direction:column;align-items:center;">'
+          + '<div class="trend-bar" data-sayi="'+t.sayi+'" style="height:'+pct+'px;width:100%;"></div>'
+          + '<div class="trend-tarih">'+gun+'</div>'
+          + '</div>';
+      });
+      h += '</div></div>';
+    }
+
+    // Kategori dağılımı
+    if (ist.kategoriDagilimi) {
+      h += '<div class="admin-bolum"><div class="admin-bolum-baslik">🎯 Kategori Dağılımı</div>';
+      var KATRENK = { sanat:"#fd79a8", matematik:"#74b9ff", dil:"#a29bfe", muzik:"#fdcb6e", fen:"#55efc4", motor:"#e17055", sosyal:"#00cec9", oyun:"#6c5ce7" };
+      var toplamKat = Object.values(ist.kategoriDagilimi).reduce(function(a,b){ return a+b; }, 0) || 1;
+      Object.entries(ist.kategoriDagilimi).forEach(function(entry) {
+        var k = entry[0]; var v = entry[1];
+        var pct = Math.round((v/toplamKat)*100);
+        var renk = KATRENK[k] || "#b2bec3";
+        h += '<div style="margin-bottom:8px;">'
+          + '<div style="display:flex;justify-content:space-between;font-size:12px;font-weight:700;margin-bottom:3px;"><span>'+k+'</span><span>'+v+' ('+pct+'%)</span></div>'
+          + '<div style="background:#f0f0f0;border-radius:6px;height:8px;"><div style="width:'+pct+'%;background:'+renk+';height:8px;border-radius:6px;transition:width 0.5s;"></div></div>'
+          + '</div>';
+      });
+      h += '</div>';
+    }
+
+    // En popüler etkinlikler
+    if (ist.enPopuler && ist.enPopuler.length) {
+      h += '<div class="admin-bolum"><div class="admin-bolum-baslik">🏆 En Popüler Etkinlikler</div>';
+      ist.enPopuler.forEach(function(e, i) {
+        var siraClass = i===0?"bir":i===1?"iki":i===2?"uc":"";
+        h += '<div class="popüler-etkinlik">'
+          + '<div class="popüler-sira '+siraClass+'">'+(i+1)+'.</div>'
+          + '<div style="flex:1;min-width:0;"><div style="font-weight:700;font-size:13px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;">'+esc(e.baslik)+'</div><div style="font-size:11px;color:var(--gri);">'+esc(e.sahip)+'</div></div>'
+          + '<span class="admin-badge badge-mavi">'+e.kaydedenSayisi+' kayıt</span>'
+          + '</div>';
+      });
+      h += '</div>';
+    }
+  }
+
+  // ---- KULLANICILAR ----
+  else if (state.adminSekme === "kullanicilar") {
+    if (!state.adminKullanicilar) { adminYukle("kullanicilar"); return h + '<div style="padding:20px;text-align:center;color:var(--gri);">Yükleniyor...</div></div></main>'; }
+    var kullanicilar = state.adminKullanicilar.kullanicilar || [];
+
+    h += '<div class="admin-bolum">';
+    h += '<div class="admin-bolum-baslik">👥 Kullanıcılar <span style="font-size:12px;color:var(--gri);font-weight:400;">('+kullanicilar.length+' toplam)</span></div>';
+    h += '<input class="admin-arama" type="text" placeholder="🔍 İsim veya email ara..." value="'+esc(state.adminArama)+'" oninput="state.adminArama=this.value;render()">';
+
+    var filtreli = kullanicilar.filter(function(u) {
+      if (!state.adminArama) return true;
+      var q = state.adminArama.toLowerCase();
+      return (u.ad||"").toLowerCase().indexOf(q)!==-1 || (u.email||"").toLowerCase().indexOf(q)!==-1;
+    });
+
+    h += '<div style="overflow-x:auto;"><table class="admin-tablo"><thead><tr><th>Kullanıcı</th><th>Etkinlik</th><th>Takipçi</th><th>Durum</th><th>İşlem</th></tr></thead><tbody>';
+    filtreli.forEach(function(u) {
+      h += '<tr>'
+        + '<td><div style="display:flex;align-items:center;gap:8px;">'
+        + (u.resim ? '<img class="kullanici-avatar" src="'+u.resim+'">' : '<div style="width:32px;height:32px;border-radius:50%;background:#e9ecef;display:flex;align-items:center;justify-content:center;">👤</div>')
+        + '<div><div style="font-weight:700;font-size:13px;">'+esc(u.ad)+'</div><div style="font-size:11px;color:var(--gri);">'+esc(u.email)+'</div></div>'
+        + '</div></td>'
+        + '<td><strong>'+u.etkinlikSayisi+'</strong></td>'
+        + '<td><strong>'+u.takipciSayisi+'</strong></td>'
+        + '<td>'+(u.banlandi ? '<span class="admin-badge badge-kirmizi">🔨 Banlı</span>' : '<span class="admin-badge badge-yesil">✅ Aktif</span>')+'</td>'
+        + '<td><div style="display:flex;gap:4px;">'
+        + '<button class="admin-eylem-btn '+(u.banlandi?"basari":"tehlike")+'" onclick="adminBanToggle(\''+u.email+'\','+u.banlandi+')">'+(u.banlandi?"Banı Kaldır":"Banla")+'</button>'
+        + '</div></td>'
+        + '</tr>';
+    });
+    h += '</tbody></table></div></div>';
+  }
+
+  // ---- ETKİNLİKLER ----
+  else if (state.adminSekme === "etkinlikler") {
+    if (!state.adminEtkinlikler) { adminYukle("etkinlikler"); return h + '<div style="padding:20px;text-align:center;color:var(--gri);">Yükleniyor...</div></div></main>'; }
+    var etkinlikler = state.adminEtkinlikler.etkinlikler || [];
+
+    h += '<div class="admin-bolum">';
+    h += '<div class="admin-bolum-baslik">📚 Etkinlikler <span style="font-size:12px;color:var(--gri);font-weight:400;">('+etkinlikler.length+' toplam)</span></div>';
+    h += '<input class="admin-arama" type="text" placeholder="🔍 Etkinlik veya sahip ara..." value="'+esc(state.adminArama)+'" oninput="state.adminArama=this.value;render()">';
+
+    var filtreliEtk = etkinlikler.filter(function(e) {
+      if (!state.adminArama) return true;
+      var q = state.adminArama.toLowerCase();
+      return (e.baslik||"").toLowerCase().indexOf(q)!==-1 || (e.sahipAd||"").toLowerCase().indexOf(q)!==-1;
+    });
+
+    h += '<div style="overflow-x:auto;"><table class="admin-tablo"><thead><tr><th>Etkinlik</th><th>Sahip</th><th>Kategori</th><th>Tarih</th><th>İşlem</th></tr></thead><tbody>';
+    filtreliEtk.forEach(function(e) {
+      var tarih = e.kaydedilmeTarihi ? e.kaydedilmeTarihi.split("T")[0] : "-";
+      h += '<tr>'
+        + '<td style="max-width:160px;"><div style="font-weight:700;font-size:12px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;">'+esc(e.baslik||"-")+'</div><div style="font-size:11px;color:var(--gri);">'+esc(e.yas||"")+'</div></td>'
+        + '<td style="font-size:12px;">'+esc(e.sahipAd||"-")+'</td>'
+        + '<td><span class="admin-badge badge-mavi">'+esc(e.kategori||"-")+'</span></td>'
+        + '<td style="font-size:11px;color:var(--gri);">'+tarih+'</td>'
+        + '<td><button class="admin-eylem-btn tehlike" onclick="adminEtkinlikSil(\''+e.id+'\',\''+esc(e.baslik||"")+'\')">Sil</button></td>'
+        + '</tr>';
+    });
+    h += '</tbody></table></div></div>';
+  }
+
+  // ---- DUYURULAR ----
+  else if (state.adminSekme === "duyurular") {
+    h += '<div class="admin-bolum"><div class="admin-bolum-baslik">📢 Yeni Duyuru Yayınla</div>';
+    h += '<div class="duyuru-form">'
+      + '<label>Başlık</label>'
+      + '<input type="text" placeholder="Duyuru başlığı..." value="'+esc(state.adminDuyuruForm.baslik)+'" oninput="state.adminDuyuruForm.baslik=this.value">'
+      + '<label>Mesaj</label>'
+      + '<textarea rows="3" placeholder="Duyuru içeriği..." oninput="state.adminDuyuruForm.mesaj=this.value">'+esc(state.adminDuyuruForm.mesaj)+'</textarea>'
+      + '<label>Tip</label>'
+      + '<select onchange="state.adminDuyuruForm.tip=this.value">'
+      + '<option value="bilgi" '+(state.adminDuyuruForm.tip==="bilgi"?"selected":"")+'>ℹ️ Bilgi</option>'
+      + '<option value="uyari" '+(state.adminDuyuruForm.tip==="uyari"?"selected":"")+'>⚠️ Uyarı</option>'
+      + '<option value="basari" '+(state.adminDuyuruForm.tip==="basari"?"selected":"")+'>✅ Başarı</option>'
+      + '</select>'
+      + '</div>'
+      + '<button class="btn-ana" style="margin-top:14px;width:100%;" onclick="adminDuyuruGonder()">📢 Duyuru Yayınla</button>';
+    h += '</div>';
+
+    // Mevcut duyurular (API'dan çekmek yerine frontend fetch yapalım)
+    h += '<div class="admin-bolum"><div class="admin-bolum-baslik">📋 Yayındaki Duyurular</div>';
+    h += '<div id="duyuruListesi"><button class="admin-eylem-btn normal" onclick="adminDuyurulariYukle()">🔄 Duyuruları Yükle</button></div>';
+    h += '</div>';
+  }
+
+  // ---- ROZETLER ----
+  else if (state.adminSekme === "rozetler") {
+    h += '<div class="admin-bolum"><div class="admin-bolum-baslik">🏅 Rozet Oluştur</div>';
+    h += '<p style="font-size:13px;color:var(--gri);margin-bottom:14px;">Rozet Yönetimi panelini kullan:</p>';
+    h += '<button class="btn-ana" onclick="rozetPanelAc()">🏅 Rozet Yönetim Panelini Aç</button>';
+    h += '<div style="margin-top:20px;"><div class="admin-bolum-baslik">📋 Mevcut Rozetler</div>';
+    h += '<div class="rozet-satiri" style="margin-top:8px;">';
+    // SKYDIVEX kurucu rozeti göster
+    h += '<span class="rozet rozet-ozel" title="Etkinlik Atölyesi kurucusuna özel">⚡ SKYDIVEX Kurucu</span>';
+    state.rozetler.forEach(function(r) {
+      h += '<span class="rozet" style="background:'+r.renk+'22;border-color:'+r.renk+';color:'+r.renk+';" title="'+esc(r.aciklama)+'">'+r.emoji+' '+esc(r.isim)+'</span>';
+    });
+    h += '</div></div></div>';
+  }
+
+  // ---- KV VERİTABANI ----
+  else if (state.adminSekme === "kv") {
+    h += '<div class="admin-bolum"><div class="admin-bolum-baslik">🗄️ KV Veritabanı Erişimi</div>';
+    h += '<p style="font-size:12px;color:var(--gri);margin-bottom:12px;">⚠️ Dikkatli kullan! Yanlış silme işlemi veri kaybına yol açar.</p>';
+    h += '<label style="font-size:12px;font-weight:700;color:var(--gri);">KV Anahtarı</label>';
+    h += '<input class="admin-arama" type="text" placeholder="örn: profil:email@gmail.com, galeri:index" value="'+esc(state.adminKvAnahtar)+'" oninput="state.adminKvAnahtar=this.value" style="margin-top:6px;">';
+    h += '<div style="display:flex;gap:8px;margin-top:8px;">'
+      + '<button class="admin-eylem-btn basari" onclick="adminKvOku()" style="padding:8px 16px;">📖 Oku</button>'
+      + '<button class="admin-eylem-btn tehlike" onclick="adminKvSil()" style="padding:8px 16px;">🗑️ Sil</button>'
+      + '</div>';
+    if (state.adminKvSonuc !== null) {
+      var sonucText = state.adminKvSonuc;
+      try { sonucText = JSON.stringify(JSON.parse(state.adminKvSonuc), null, 2); } catch(e) {}
+      h += '<div class="kv-sonuc">'+esc(sonucText || "(boş)")+'</div>';
+    }
+    h += '</div>';
+
+    var kvOrnekler = ["galeri:index","profil:liste","rozetler:liste","duyurular"];
+    h += '<div class="admin-bolum"><div class="admin-bolum-baslik">📋 Hızlı Erişim Anahtarları</div>';
+    h += '<div style="display:flex;flex-wrap:wrap;gap:6px;">';
+    kvOrnekler.forEach(function(k) {
+      h += '<button class="admin-eylem-btn normal" onclick="state.adminKvAnahtar=\''+k+'\';render()">'+k+'</button>';
+    });
+    h += '</div></div>';
+  }
+
+  // ---- ARAÇLAR ----
+  else if (state.adminSekme === "araclar") {
+    h += '<div class="admin-bolum"><div class="admin-bolum-baslik">🔧 Sistem Araçları</div>';
+
+    h += '<div style="display:flex;flex-direction:column;gap:12px;">';
+
+    h += '<div style="border:1.5px solid #f0f0f0;border-radius:12px;padding:14px;">'
+      + '<div style="font-weight:700;font-size:14px;margin-bottom:4px;">🔄 Galeriyi Yeniden Oluştur</div>'
+      + '<p style="font-size:12px;color:var(--gri);margin-bottom:10px;">Tüm public kullanıcıların etkinliklerini tarayarak galeri:index\'i yeniden oluşturur. Bozuk galerileri düzeltmek için kullan.</p>'
+      + '<button class="admin-eylem-btn uyari" onclick="adminGaleriRebuild()" style="padding:8px 16px;">🔄 Galeriyi Rebuild Et</button>'
+      + '</div>';
+
+    h += '<div style="border:1.5px solid #f0f0f0;border-radius:12px;padding:14px;">'
+      + '<div style="font-weight:700;font-size:14px;margin-bottom:4px;">📊 Veritabanı Özeti</div>'
+      + '<p style="font-size:12px;color:var(--gri);margin-bottom:10px;">İstatistikleri yenile ve cache\'i temizle.</p>'
+      + '<button class="admin-eylem-btn basari" onclick="state.adminIstatistik=null;state.adminKullanicilar=null;state.adminEtkinlikler=null;adminYukle(\'istatistik\')" style="padding:8px 16px;">♻️ Cache Temizle ve Yenile</button>'
+      + '</div>';
+
+    h += '<div style="border:1.5px solid #f0f0f0;border-radius:12px;padding:14px;">'
+      + '<div style="font-weight:700;font-size:14px;margin-bottom:4px;">📣 Test Duyurusu Gönder</div>'
+      + '<p style="font-size:12px;color:var(--gri);margin-bottom:10px;">Hızlı test duyurusu yayınla (sadece kendin görürsün).</p>'
+      + '<button class="admin-eylem-btn normal" onclick="state.adminDuyuruForm={baslik:\'Test Duyurusu\',mesaj:\'Bu bir test mesajıdır.\',tip:\'bilgi\'};adminSekmeGec(\'duyurular\')" style="padding:8px 16px;">📣 Duyuru Sekmesine Git</button>'
+      + '</div>';
+
+    h += '</div></div>';
+  }
+
+  h += '</div></main>';
+  return h;
+}
+
+async function adminDuyurulariYukle() {
+  try {
+    var d = await apiFetch("/duyurular");
+    var el = document.getElementById("duyuruListesi");
+    if (!el) return;
+    if (!d.duyurular || !d.duyurular.length) { el.innerHTML = '<p style="font-size:13px;color:var(--gri);">Yayında duyuru yok.</p>'; return; }
+    var DUYURU_CLASS = { bilgi:"duyuru-bilgi", uyari:"duyuru-uyari", basari:"duyuru-basari" };
+    el.innerHTML = d.duyurular.map(function(dy) {
+      return '<div class="duyuru-kart '+(DUYURU_CLASS[dy.tip]||"duyuru-bilgi")+'">'
+        + '<div style="display:flex;justify-content:space-between;align-items:center;">'
+        + '<strong style="font-size:13px;">'+esc(dy.baslik)+'</strong>'
+        + '<button class="admin-eylem-btn tehlike" onclick="adminDuyuruSil(\''+dy.id+'\')">Sil</button>'
+        + '</div>'
+        + '<p style="font-size:12px;margin:4px 0 0;color:var(--gri);">'+esc(dy.mesaj)+'</p>'
+        + '</div>';
+    }).join("");
+  } catch(e) { toast("⚠️ Duyurular yüklenemedi."); }
 }
 
 function renderProfil() {
